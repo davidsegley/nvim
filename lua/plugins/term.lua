@@ -26,6 +26,9 @@ return {
         cmd = "lazygit",
         hidden = true,
         direction = "float",
+        on_close = function()
+          vim.cmd("Gitsigns refresh")
+        end,
       })
 
       local function lazygit_toggle()
