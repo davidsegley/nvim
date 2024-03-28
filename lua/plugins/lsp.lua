@@ -28,13 +28,16 @@ return {
           keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- go to declaration
 
           opts.desc = "Show LSP definitions"
-          keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts) -- show lsp definitions
+          -- stylua: ignore
+          keymap.set("n", "gd", function() require("telescope.builtin").lsp_definitions({ reuse_win = true }) end, opts) -- show lsp definitions
 
           opts.desc = "Show LSP implementations"
-          keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts) -- show lsp implementations
+          -- stylua: ignore
+          keymap.set("n", "gi", function() require("telescope.builtin").lsp_implementations({ reuse_win = true }) end, opts) -- show lsp implementations
 
           opts.desc = "Show LSP type definitions"
-          keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts) -- show lsp type definitions
+          -- stylua: ignore
+          keymap.set("n", "gt", function() require("telescope.builtin").lsp_type_definitions({ reuse_win = true }) end, opts) -- show lsp type definitions
 
           opts.desc = "See available code actions"
           keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
@@ -45,7 +48,7 @@ return {
           opts.desc = "Show buffer diagnostics"
           keymap.set(
             "n",
-            "<leader>D",
+            "<leader>cD",
             "<cmd>Telescope diagnostics bufnr=0<CR>",
             opts
           ) -- show  diagnostics for file
