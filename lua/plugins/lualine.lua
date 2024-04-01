@@ -101,8 +101,9 @@ return {
             },
             {
               "progress",
-              padding = { left = "2", right = "2" },
-              icon = "",
+            },
+            {
+              "location",
             },
           },
           lualine_y = {},
