@@ -15,7 +15,7 @@ return {
   },
   keys = {
     {
-      "<leader>,",
+      "<leader>.",
       "<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>",
       desc = "Switch Buffer",
     },
@@ -24,7 +24,7 @@ return {
     { "<leader>/", "<cmd>Telescope live_grep<cr>", desc = "Find String" },
     { "<leader>fc", util.config_files, desc = "Find Config File" },
     { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
-    { "<leader>ff", util.find_files, desc = "Recent" },
+    { "<leader>ff", util.find_files, desc = "Find Files" },
     {
       "<leader>uC",
       [[<cmd>lua require("telescope.builtin").colorscheme({ enable_preview = true })<cr>]],
@@ -89,7 +89,7 @@ return {
     { "<leader>sM", "<cmd>Telescope man_pages<cr>", desc = "Man Pages" },
     { "<leader>sm", "<cmd>Telescope marks<cr>", desc = "Jump to Mark" },
     { "<leader>so", "<cmd>Telescope vim_options<cr>", desc = "Options" },
-    { "<leader>sR", "<cmd>Telescope resume<cr>", desc = "Resume" },
+    { "<leader>sr", "<cmd>Telescope resume<cr>", desc = "Resume last search" },
   },
   config = function()
     local telescope = require("telescope")
@@ -98,7 +98,6 @@ return {
     telescope.setup({
       defaults = {
         prompt_prefix = " ",
-        selection_caret = " ",
         get_selection_window = function()
           local wins = vim.api.nvim_list_wins()
           table.insert(wins, 1, vim.api.nvim_get_current_win())
