@@ -76,6 +76,7 @@ return {
         "yaml",
         "scss",
         "css",
+        "vue",
         "gdscript",
       },
       incremental_selection = {

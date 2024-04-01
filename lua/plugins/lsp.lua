@@ -3,6 +3,7 @@ return {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
+      "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
 
@@ -73,6 +74,23 @@ return {
       local servers = {
         html = {},
         tsserver = {
+          init_options = {
+            plugins = {
+              {
+                -- Vue
+                -- NOTE: location can be global or nothing if it points to the
+                -- local node_modules of the project
+                name = "@vue/typescript-plugin",
+                location = "",
+                languages = { "javascript", "typescript", "vue" },
+              },
+            },
+          },
+          filetypes = {
+            "javascript",
+            "typescript",
+            "vue",
+          },
           on_attach = function(client)
             client.server_capabilities.documentFormattingProvider = false
           end,
@@ -123,14 +141,6 @@ return {
           end,
         },
         volar = {
-          filetypes = {
-            "typescript",
-            "javascript",
-            "javascriptreact",
-            "typescriptreact",
-            "vue",
-            "json",
-          },
           on_attach = function(client)
             client.server_capabilities.documentFormattingProvider = false
           end,
@@ -178,6 +188,7 @@ return {
 
   {
     "williamboman/mason.nvim",
+    cmd = "Mason",
     event = "VeryLazy",
     config = true,
   },
