@@ -15,7 +15,7 @@ return {
 
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup(
-          "kickstart-lsp-attach",
+          "starb-lsp-attach",
           { clear = true }
         ),
         callback = function(_)
@@ -124,6 +124,8 @@ return {
         gdscript = {
           -- NOTE: This only works for windows
           cmd = { "ncat", "localhost", "6005" },
+
+          --cmd = vim.lsp.rpc.connect("172.19.240.1", 6005),
           root_dir = function()
             return vim.fs.dirname(
               vim.fs.find({ "project.godot", ".git" }, { upward = true })[1]
@@ -135,9 +137,10 @@ return {
               pipe = "/tmp/godot.pipe"
             end
 
-            print("on_attach")
-
-            vim.api.nvim_command([[echo serverstart(']] .. pipe .. [[')]])
+            pcall(
+              vim.api.nvim_command,
+              [[echo serverstart(']] .. pipe .. [[')]]
+            )
           end,
         },
         volar = {
