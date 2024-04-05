@@ -24,12 +24,17 @@ return {
       local Terminal = require("toggleterm.terminal").Terminal
       local lazygit = Terminal:new({
         cmd = "lazygit",
+        dir = "git_dir",
         hidden = true,
         direction = "float",
         close_on_exit = true,
       })
 
       local function lazygit_toggle()
+        local cwd = vim.uv.cwd()
+        if cwd ~= nil then
+          lazygit.dir = cwd
+        end
         lazygit:toggle()
       end
 
