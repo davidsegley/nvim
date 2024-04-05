@@ -137,10 +137,14 @@ return {
               pipe = "/tmp/godot.pipe"
             end
 
-            pcall(
+            local success = pcall(
               vim.api.nvim_command,
               [[echo serverstart(']] .. pipe .. [[')]]
             )
+
+            if success then
+              print("Godot Language Server Connected")
+            end
           end,
         },
         volar = {
