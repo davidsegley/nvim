@@ -73,6 +73,7 @@ return {
 
       local servers = {
         html = {},
+        clangd = {},
         tsserver = {
           init_options = {
             plugins = {
@@ -160,6 +161,7 @@ return {
         "html",
         "eslint",
         "cssls",
+        "clangd",
         "lua_ls",
 
         "stylua", -- lua formatter
