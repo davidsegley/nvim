@@ -35,8 +35,8 @@ return {
   },
 
   {
-    "echasnovski/mini.pairs",
-    event = { "BufReadPre", "BufNewFile" },
+    "windwp/nvim-autopairs",
+    event = { "InsertEnter" },
     opts = {},
   },
 
