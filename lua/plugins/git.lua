@@ -23,7 +23,7 @@ return {
         map("n", "[h", gs.prev_hunk, "Prev Hunk")
         map({ "n", "v" }, "<leader>gr", ":Gitsigns reset_hunk<CR>", "Reset Hunk")
         map("n", "<leader>gp", gs.preview_hunk_inline, "Preview Hunk Inline")
-        map("n", "<leader>gb", function() gs.blame_line() end, "Blame Line")
+        map("n", "<leader>gb", function() gs.blame_line({ ignore_whitespace = true }) end, "Blame Line")
       end,
     },
   },
