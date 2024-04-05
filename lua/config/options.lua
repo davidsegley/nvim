@@ -37,7 +37,6 @@ opt.winminwidth = 5 -- Minimum window width
 opt.scrolloff = 4 -- Lines of context
 opt.sidescrolloff = 8 -- Columns of context
 opt.breakindent = true
-opt.showmode = false
 opt.mouse = "a"
 opt.formatoptions = "jcroqlnt" -- tcqj
 opt.completeopt = "menu,menuone,noselect"

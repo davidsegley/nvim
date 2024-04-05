@@ -20,14 +20,11 @@ return {
         sections = {
           lualine_a = {
             {
-              "mode",
+              "filename",
             },
           },
           lualine_b = {},
           lualine_c = {
-            {
-              "filename",
-            },
             {
               "filetype",
               padding = { left = 1, right = 1 },
