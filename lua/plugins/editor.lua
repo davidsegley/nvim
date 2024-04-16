@@ -9,6 +9,7 @@ return {
       enable_autocmd = false,
     },
   },
+
   {
     "echasnovski/mini.comment",
     event = { "BufReadPre", "BufNewFile" },
@@ -20,6 +21,16 @@ return {
         end,
       },
     },
+  },
+  {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      require("nvim-surround").setup({
+        -- Configuration here, or leave empty to use defaults
+      })
+    end,
   },
 
   {
@@ -65,70 +76,62 @@ return {
   },
 
   {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
-    cmd = "Neotree",
-    keys = {
-      {
-        "<leader>e",
-        function()
-          require("neo-tree.command").execute({
-            toggle = true,
-            dir = vim.loop.cwd(),
-          })
-        end,
-        desc = "Explorer NeoTree (cwd)",
-      },
-    },
-    deactivate = function()
-      vim.cmd([[Neotree close]])
-    end,
-    opts = {
-      sort_function = function(a, b)
-        if a.type == b.type then
-          return a.path < b.path
-        end
-        return a.type < b.type
-      end,
-      filesystem = {
-        filtered_items = {
-          bind_to_cwd = false,
-          visible = true,
-          hide_dotfiles = false,
-          follow_current_file = { enabled = true },
-          use_libuv_file_watcher = true,
+    "nvim-tree/nvim-tree.lua",
+    dependencies = "nvim-tree/nvim-web-devicons",
+    config = function()
+      local nvimtree = require("nvim-tree")
+
+      -- recommended settings from nvim-tree documentation
+      vim.g.loaded_netrw = 1
+      vim.g.loaded_netrwPlugin = 1
+
+      nvimtree.setup({
+        sync_root_with_cwd = true,
+        view = {
+          width = 40,
+          -- relativenumber = false,
         },
-      },
-      sources = { "filesystem", "buffers", "git_status", "document_symbols" },
-      open_files_do_not_replace_types = {
-        "terminal",
-        "Trouble",
-        "trouble",
-        "qf",
-        "Outline",
-      },
-      window = {
-        mappings = {
-          ["<space>"] = "none",
-          ["Y"] = {
-            function(state)
-              local node = state.tree:get_node()
-              local path = node:get_id()
-              vim.fn.setreg("+", path, "c")
-            end,
-            desc = "copy path to clipboard",
+        git = {
+          ignore = false,
+        },
+        -- change folder arrow icons
+        renderer = {
+          indent_markers = {
+            enable = true,
+          },
+          icons = {
+            glyphs = {
+              folder = {},
+            },
           },
         },
-      },
-      default_component_configs = {
-        indent = {
-          with_expanders = true, -- if nil and file nesting is enabled, will enable expanders
-          expander_collapsed = "",
-          expander_expanded = "",
-          expander_highlight = "NeoTreeExpander",
+        -- disable window_picker for
+        -- explorer to work well with
+        -- window splits
+        actions = {
+          open_file = {
+            window_picker = {
+              enable = false,
+            },
+          },
         },
-      },
-    },
+      })
+
+      local keymap = vim.keymap
+
+      keymap.set(
+        "n",
+        "<leader>e",
+        "<cmd>NvimTreeToggle<CR>",
+        { desc = "Toggle file explorer" }
+      ) -- toggle file explorer
+      keymap.set(
+        "n",
+        "<leader>fe",
+        "<cmd>NvimTreeFindFileToggle<CR>",
+        { desc = "Toggle file explorer on current file" }
+      ) -- toggle file explorer on current file
+    end,
   },
 
   {
