@@ -26,11 +26,6 @@ return {
     { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
     { "<leader>ff", util.find_files, desc = "Find Files" },
     {
-      "<leader>uC",
-      [[<cmd>lua require("telescope.builtin").colorscheme({ enable_preview = true })<cr>]],
-      desc = "Colorscheme with preview",
-    },
-    {
       "<leader>:",
       "<cmd>Telescope command_history<cr>",
       desc = "Command History",
