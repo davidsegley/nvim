@@ -1,5 +1,3 @@
-vim.cmd("let g:netrw_liststyle = 3")
-
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.editorconfig = true
@@ -51,7 +49,6 @@ opt.pumblend = 10 -- Popup blend
 opt.pumheight = 10 -- Maximum number of entries in a popup
 opt.confirm = true -- Confirm to save changes before exiting modified buffer
 opt.cursorline = true -- Enable highlighting of the current line
-opt.expandtab = true -- Use spaces instead of tabs
 opt.ignorecase = true -- Ignore case
 opt.smartcase = true
 opt.inccommand = "nosplit" -- preview incremental substitute
@@ -59,20 +56,25 @@ opt.laststatus = 3 -- global statusline
 opt.list = true -- Show some invisible characters
 opt.number = true
 opt.relativenumber = true -- Relative line numbers
-opt.shiftround = true -- Round indent
-opt.shiftwidth = 2 -- Size of an indent
 opt.signcolumn = "yes" -- Always show the signcolumn, otherwise it would shift the text each time
 opt.splitright = true -- Put new windows right of current
-opt.tabstop = 2 -- Number of spaces tabs count for
+
+opt.hlsearch = false
+
+opt.shiftwidth = 4 -- Size of an indent
+opt.tabstop = 4 -- Number of spaces tabs count for
+opt.softtabstop = 4
+opt.expandtab = true -- Use spaces instead of tabs
+opt.shiftround = true -- Round indent
+opt.autoindent = true
+
 opt.timeoutlen = 300 -- Lower than default (1000) to quickly trigger which-key
 opt.splitbelow = true -- Put new windows below current
 opt.splitkeep = "screen"
 opt.termguicolors = true -- True color support
 opt.undofile = true
-opt.undolevels = 10000
 opt.updatetime = 200 -- Save swap file and trigger CursorHold
 opt.virtualedit = "block" -- Allow cursor to move where there is no text in visual block mode
-opt.autoindent = true
 opt.wrap = false -- Disable line wrap
 opt.fillchars = {
   foldopen = "",
@@ -81,6 +83,8 @@ opt.fillchars = {
   foldsep = " ",
   diff = "╱",
 }
+
+opt.cc = "80"
 
 -- fold
 opt.foldmethod = "expr"
