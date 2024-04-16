@@ -1,5 +1,6 @@
 local ignore_filetypes = {
   "neo-tree",
+  "NvimTree",
   "dap-repl",
   "dapui-console",
   "dapui-watches",
@@ -85,5 +86,14 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     end
     local file = vim.uv.fs_realpath(event.match) or event.match
     vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
+  end,
+})
+
+-- check for spell in text filetypes
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup("wrap_spell"),
+  pattern = { "gitcommit", "markdown" },
+  callback = function()
+    vim.opt_local.spell = true
   end,
 })
