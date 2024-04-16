@@ -70,7 +70,6 @@ return {
         ["<leader>g"] = { name = "+git" },
         ["<leader>q"] = { name = "+quit" },
         ["<leader>s"] = { name = "+search" },
-        ["<leader>u"] = { name = "+ui" },
         ["<leader>x"] = { name = "+trouble" },
       })
     end,
