@@ -71,7 +71,23 @@ return {
         { name = "buffer" }, -- text within current buffer
       }),
     })
+    local handlers = require("nvim-autopairs.completion.handlers")
 
-    cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+    cmp.event:on(
+      "confirm_done",
+      cmp_autopairs.on_confirm_done({
+        filetypes = {
+          gdscript = {
+            ["("] = {
+              kind = {
+                cmp.lsp.CompletionItemKind.Function,
+                cmp.lsp.CompletionItemKind.Method,
+              },
+              handler = handlers["*"],
+            },
+          },
+        },
+      })
+    )
   end,
 }
