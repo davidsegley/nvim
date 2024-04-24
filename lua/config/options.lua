@@ -36,7 +36,6 @@ opt.sessionoptions = {
 opt.winminwidth = 5 -- Minimum window width
 opt.scrolloff = 4 -- Lines of context
 opt.sidescrolloff = 8 -- Columns of context
-opt.breakindent = true
 opt.mouse = "a"
 opt.formatoptions = "jcroqlnt" -- tcqj
 opt.completeopt = "menu,menuone,noselect"
@@ -67,6 +66,7 @@ opt.softtabstop = 4
 opt.expandtab = true -- Use spaces instead of tabs
 opt.shiftround = true -- Round indent
 opt.autoindent = true
+opt.breakindent = true
 
 opt.timeoutlen = 300 -- Lower than default (1000) to quickly trigger which-key
 opt.splitbelow = true -- Put new windows below current
