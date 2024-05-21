@@ -80,6 +80,22 @@ return {
     { "<leader>sm", "<cmd>Telescope marks<cr>", desc = "Jump to Mark" },
     { "<leader>so", "<cmd>Telescope vim_options<cr>", desc = "Options" },
     { "<leader>sr", "<cmd>Telescope resume<cr>", desc = "Resume last search" },
+    {
+      "<leader>cs",
+      function()
+        require("telescope.builtin").lsp_document_symbols({
+          symbols = {
+            "Class",
+            "Function",
+            "Interface",
+            "Method",
+            "Struct",
+            "Trait",
+          },
+        })
+      end,
+      desc = "Goto Symbol",
+    },
   },
   config = function()
     local telescope = require("telescope")
@@ -99,7 +115,7 @@ return {
           end
           return 0
         end,
-        path_display = { "truncate" },
+        path_display = { "filename_first", "truncate" },
         mappings = {
           i = {
             ["<C-k>"] = actions.move_selection_previous, -- move to prev result
