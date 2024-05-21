@@ -59,4 +59,8 @@ vim.keymap.set("n", "<leader>cl", "<cmd>LspInfo<CR>", { desc = "LSP Info" })
 
 -- diagnostic
 vim.keymap.set("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
+
+-- Explorer
+vim.keymap.set("n", "<leader>e", "<cmd>Ex<cr>", { desc = "Open Explorer" })
+
 --stylua: ignore end
