@@ -56,8 +56,10 @@ opt.smartcase = true
 opt.inccommand = "nosplit" -- preview incremental substitute
 opt.laststatus = 3 -- global statusline
 opt.list = true -- Show some invisible characters
+
 opt.number = true
 opt.relativenumber = true -- Relative line numbers
+
 opt.signcolumn = "yes" -- Always show the signcolumn, otherwise it would shift the text each time
 opt.splitright = true -- Put new windows right of current
 
@@ -70,6 +72,10 @@ opt.expandtab = true -- Use spaces instead of tabs
 opt.shiftround = true -- Round indent
 opt.autoindent = true
 opt.breakindent = true
+
+-- Disable swap file
+opt.swapfile = false
+opt.backup = false
 
 opt.timeoutlen = 300 -- Lower than default (1000) to quickly trigger which-key
 opt.splitbelow = true -- Put new windows below current
