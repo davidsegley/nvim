@@ -55,6 +55,7 @@ return {
     "nvim-focus/focus.nvim",
     event = { "BufReadPre", "BufNewFile" },
     config = true,
+    enabled = false,
   },
 
   {
@@ -185,14 +186,8 @@ return {
     keys = {
       {
         "<leader>xx",
-        "<cmd>TroubleToggle document_diagnostics<cr>",
+        "<cmd>Trouble diagnostics<cr>",
         desc = "Document Diagnostics (Trouble)",
-      },
-
-      {
-        "<leader>xX",
-        "<cmd>TroubleToggle workspace_diagnostics<cr>",
-        desc = "Workspace Diagnostics (Trouble)",
       },
     },
   },
