@@ -2,6 +2,9 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.editorconfig = true
 
+-- Netrw
+vim.g.netrw_bufsettings = "noma nomod nu nobl nowrap ro"
+
 -- Terminal
 if vim.fn.has("win32") == 1 then
   vim.o.shell = "pwsh"
