@@ -8,7 +8,7 @@ return {
       "WhoIsSethDaniel/mason-tool-installer.nvim",
 
       "hrsh7th/cmp-nvim-lsp",
-      { "folke/neodev.nvim", opts = {} },
+      { "folke/lazydev.nvim", opts = {} },
     },
     config = function()
       local keymap = vim.keymap -- for conciseness
@@ -98,6 +98,7 @@ return {
         },
         cssls = {},
         eslint = {
+          useFlatConfig = false,
           on_attach = function(_, bufnr)
             vim.api.nvim_create_autocmd("BufWritePre", {
               buffer = bufnr,
@@ -153,6 +154,8 @@ return {
             client.server_capabilities.documentFormattingProvider = false
           end,
         },
+        -- vuels = {},
+        yamlls = {},
       }
 
       local ensure_installed = {
