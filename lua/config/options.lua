@@ -54,7 +54,7 @@ opt.cursorline = true -- Enable highlighting of the current line
 opt.ignorecase = true -- Ignore case
 opt.smartcase = true
 opt.inccommand = "nosplit" -- preview incremental substitute
-opt.laststatus = 3 -- global statusline
+-- opt.laststatus = 3 -- global statusline
 opt.list = true -- Show some invisible characters
 
 opt.number = true
