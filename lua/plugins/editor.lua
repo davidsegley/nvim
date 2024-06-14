@@ -55,7 +55,7 @@ return {
     "nvim-focus/focus.nvim",
     event = { "BufReadPre", "BufNewFile" },
     config = true,
-    enabled = false,
+    enabled = true,
   },
 
   {
