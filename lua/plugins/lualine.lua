@@ -2,6 +2,7 @@ return {
   {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
+    enabled = true,
     opts = function()
       local hide_in_width = function()
         return vim.fn.winwidth(0) > 80
@@ -10,7 +11,7 @@ return {
       return {
         options = {
           theme = "auto",
-          globalstatus = true,
+          globalstatus = false,
           disabled_filetypes = {
             statusline = { "dashboard", "alpha", "starter" },
           },
@@ -21,6 +22,8 @@ return {
           lualine_a = {
             {
               "filename",
+              path = 0,
+              color = { gui = "bold" },
             },
           },
           lualine_b = {},
@@ -33,21 +36,6 @@ return {
             {
               "branch",
               cond = hide_in_width,
-            },
-            {
-              "diff",
-              colored = false,
-              source = function()
-                local gitsigns = vim.b.gitsigns_status_dict
-
-                if gitsigns then
-                  return {
-                    added = gitsigns.added,
-                    modified = gitsigns.changed,
-                    removed = gitsigns.removed,
-                  }
-                end
-              end,
             },
           },
           lualine_x = {
@@ -97,10 +85,10 @@ return {
               color = { gui = "bold" },
             },
             {
-              "progress",
+              "location",
             },
             {
-              "location",
+              "progress",
             },
           },
           lualine_y = {},
