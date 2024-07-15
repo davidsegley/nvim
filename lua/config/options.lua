@@ -117,4 +117,4 @@ vim.diagnostic.config({
 })
 
 -- Neovide
-vim.o.guifont = "JetBrainsMono Nerd Font:h10"
+vim.o.guifont = "JetBrainsMonoNL Nerd Font:h10"

@@ -5,7 +5,16 @@ return {
   config = function()
     local lint = require("lint")
 
-    lint.linters_by_ft = {}
+    -- lint.linters.gdlint = {
+    --   cmd = "gdlint",
+    --   stdin = false, -- or false if it doesn't support content input via stdin. In that case the filename is automatically added to the arguments.
+    --   ignore_exitcode = false, -- set this to true if the linter exits with a code != 0 and that's considered normal.
+    --   stream = "both",
+    -- }
+    --
+    -- lint.linters_by_ft = {
+    --   gdscript = { "gdlint" },
+    -- }
 
     local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
 

@@ -9,6 +9,10 @@ return {
       enable_autocmd = false,
     },
   },
+  {
+    "folke/zen-mode.nvim",
+    opts = {},
+  },
 
   {
     "echasnovski/mini.comment",

@@ -23,7 +23,6 @@ return {
             {
               "filename",
               path = 0,
-              color = { gui = "bold" },
             },
           },
           lualine_b = {},

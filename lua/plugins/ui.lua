@@ -62,15 +62,15 @@ return {
       local wk = require("which-key")
       wk.setup(opts)
 
-      wk.register({
-        ["<leader>d"] = { name = "+debug" },
-        ["<leader>b"] = { name = "+buffer" },
-        ["<leader>c"] = { name = "+code" },
-        ["<leader>f"] = { name = "+files" },
-        ["<leader>g"] = { name = "+git" },
-        ["<leader>q"] = { name = "+quit" },
-        ["<leader>s"] = { name = "+search" },
-        ["<leader>x"] = { name = "+trouble" },
+      wk.add({
+        { "<leader>b", group = "buffer" },
+        { "<leader>c", group = "code" },
+        { "<leader>d", group = "debug" },
+        { "<leader>f", group = "files" },
+        { "<leader>g", group = "git" },
+        { "<leader>q", group = "quit" },
+        { "<leader>s", group = "search" },
+        { "<leader>x", group = "trouble" },
       })
     end,
   },
