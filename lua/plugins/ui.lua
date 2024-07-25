@@ -71,6 +71,7 @@ return {
         { "<leader>q", group = "quit" },
         { "<leader>s", group = "search" },
         { "<leader>x", group = "trouble" },
+        { "<leader><tab>", group = "tabs" },
       })
     end,
   },
