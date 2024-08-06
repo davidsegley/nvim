@@ -57,7 +57,11 @@ return {
     -- Useful plugin to show you pending keybinds.
     "folke/which-key.nvim",
     event = "VeryLazy",
-    opts = {},
+    opts = {
+      triggers = {
+        { "<auto>", mode = "nxso" },
+      },
+    },
     config = function(_, opts)
       local wk = require("which-key")
       wk.setup(opts)
