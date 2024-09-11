@@ -1,8 +1,18 @@
 return {
   {
+    "no-clown-fiesta/no-clown-fiesta.nvim",
+    priority = 1000,
+    config = function(_, opts)
+      require("no-clown-fiesta").setup(opts)
+      vim.cmd([[colorscheme no-clown-fiesta]])
+    end,
+  },
+
+  {
     "catppuccin/nvim",
     priority = 1000,
     name = "catppuccin",
+    enabled = false,
     opts = {
       term_colors = false,
       transparent_background = false,
