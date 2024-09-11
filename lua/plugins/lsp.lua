@@ -131,6 +131,11 @@ return {
         },
         gdscript = {
           -- NOTE: This only works for windows
+
+          -- Put this flags in godot
+          -- Use External Editor: On
+          -- Exec Path: nvim
+          -- Exec Flags: --server "\\\\.\\pipe\\godot.pipe" --remote-send "<C-\><C-N>:n {file}<CR>:call cursor({line},{col})<CR>"
           cmd = { "ncat", "localhost", "6005" },
 
           --cmd = vim.lsp.rpc.connect("172.19.240.1", 6005),
