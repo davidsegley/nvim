@@ -19,6 +19,8 @@ else
   vim.g.shellflag = ""
 end
 
+vim.cmd("language en_US", true)
+
 local opt = vim.opt
 opt.spelllang = {
   "es_mx",
