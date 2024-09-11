@@ -30,15 +30,21 @@ return {
 
           opts.desc = "Show LSP definitions"
           -- stylua: ignore
-          keymap.set("n", "gd", function() require("telescope.builtin").lsp_definitions({ reuse_win = true }) end, opts) -- show lsp definitions
+          keymap.set("n", "gd",
+            function() require("telescope.builtin").lsp_definitions({ reuse_win = true }) end,
+            opts) -- show lsp definitions
 
           opts.desc = "Show LSP implementations"
           -- stylua: ignore
-          keymap.set("n", "gi", function() require("telescope.builtin").lsp_implementations({ reuse_win = true }) end, opts) -- show lsp implementations
+          keymap.set("n", "gi",
+            function() require("telescope.builtin").lsp_implementations({ reuse_win = true }) end,
+            opts) -- show lsp implementations
 
           opts.desc = "Show LSP type definitions"
           -- stylua: ignore
-          keymap.set("n", "gt", function() require("telescope.builtin").lsp_type_definitions({ reuse_win = true }) end, opts) -- show lsp type definitions
+          keymap.set("n", "gt",
+            function() require("telescope.builtin").lsp_type_definitions({ reuse_win = true }) end,
+            opts) -- show lsp type definitions
 
           opts.desc = "See available code actions"
           keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
@@ -74,7 +80,7 @@ return {
       local servers = {
         html = {},
         clangd = {},
-        tsserver = {
+        ts_ls = {
           init_options = {
             plugins = {
               {
@@ -160,7 +166,7 @@ return {
 
       local ensure_installed = {
         "volar",
-        "tsserver",
+        "ts_ls",
         "html",
         "eslint",
         "cssls",
