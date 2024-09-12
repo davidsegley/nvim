@@ -19,7 +19,7 @@ else
   vim.g.shellflag = ""
 end
 
-vim.cmd("language en_US", true)
+vim.cmd("let $LANG = 'en'", true)
 
 local opt = vim.opt
 opt.spelllang = {
