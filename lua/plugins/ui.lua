@@ -1,9 +1,5 @@
 return {
   {
-    "no-clown-fiesta/no-clown-fiesta.nvim",
-  },
-
-  {
     "catppuccin/nvim",
     priority = 1000,
     name = "catppuccin",

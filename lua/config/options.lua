@@ -7,6 +7,8 @@ vim.g.netrw_bufsettings = "noma nomod nu nobl nowrap ro"
 
 -- Terminal
 if vim.fn.has("win32") == 1 then
+  vim.cmd("let $LANG = 'en_US.UTF-8'", true)
+
   vim.o.shell = "pwsh"
   vim.g.shellflag = " -NoLogo"
   vim.o.shellcmdflag =
@@ -18,8 +20,6 @@ if vim.fn.has("win32") == 1 then
 else
   vim.g.shellflag = ""
 end
-
-vim.cmd("let $LANG = 'en'", true)
 
 local opt = vim.opt
 opt.spelllang = {
