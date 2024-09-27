@@ -118,5 +118,6 @@ vim.diagnostic.config({
   },
 })
 
--- Neovide
-vim.o.guifont = "JetBrainsMonoNL Nerd Font:h10"
+if vim.g.neovide then
+  vim.o.guifont = "JetBrainsMonoNL Nerd Font:h10"
+end
