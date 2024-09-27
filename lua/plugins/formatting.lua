@@ -15,6 +15,7 @@ return {
         -- html = { "volar" },
         json = { "prettier" },
         lua = { "stylua" },
+        go = { "goimports", "gofumpt" },
       },
       format_on_save = {
         lsp_fallback = true,

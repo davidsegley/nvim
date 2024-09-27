@@ -167,6 +167,9 @@ return {
         },
         -- vuels = {},
         yamlls = {},
+        gopls = {
+          gofumpt = true,
+        },
       }
 
       local ensure_installed = {

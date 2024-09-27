@@ -15,6 +15,11 @@ end
 return {
   "mfussenegger/nvim-dap",
   dependencies = {
+    {
+      "leoluz/nvim-dap-go",
+      opts = {},
+    },
+
     -- fancy UI for the debugger
     {
       "rcarriga/nvim-dap-ui",

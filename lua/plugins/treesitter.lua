@@ -79,6 +79,8 @@ return {
         "css",
         "vue",
         "gdscript",
+        "gitcommit",
+        "go",
       },
       incremental_selection = {
         enable = true,
