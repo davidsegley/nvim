@@ -39,10 +39,6 @@ return {
           },
           lualine_x = {
             {
-              require("lazy.status").updates,
-              cond = require("lazy.status").has_updates,
-            },
-            {
               "diagnostics",
               colored = false,
               symbols = {
@@ -74,13 +70,13 @@ return {
             -- },
             {
               "o:encoding",
-              fmt = string.upper,
+              -- fmt = string.upper,
               color = { gui = "bold" },
             },
             {
               "fileformat",
               icons_enabled = false,
-              fmt = string.upper,
+              -- fmt = string.upper,
               color = { gui = "bold" },
             },
             {
