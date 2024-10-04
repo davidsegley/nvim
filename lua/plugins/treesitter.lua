@@ -7,6 +7,7 @@ return {
     version = false, -- last release is way too old and doesn't work on Windows
     build = ":TSUpdate",
     event = { "BufReadPre", "BufNewFile", "VeryLazy" },
+    enabled = vim.fn.executable("gcc") == 1,
     dependencies = {
       {
         "nvim-treesitter/nvim-treesitter-textobjects",
