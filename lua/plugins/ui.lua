@@ -1,11 +1,40 @@
 return {
   {
+    "no-clown-fiesta/no-clown-fiesta.nvim",
+    enabled = true,
+    opts = {
+      styles = {
+        type = { fg = "#c49c64" },
+      },
+    },
+    config = function(_, opts)
+      require("no-clown-fiesta").setup(opts)
+      vim.cmd.colorscheme("no-clown-fiesta")
+
+      vim.api.nvim_set_hl(0, "ColorColumn", {
+        bg = "#202020",
+      })
+
+      local bg = "#101010"
+
+      vim.api.nvim_set_hl(0, "StatusLineNC", {
+        bg = bg,
+      })
+
+      vim.api.nvim_set_hl(0, "StatusLine", {
+        bg = bg,
+      })
+    end,
+  },
+
+  {
     "catppuccin/nvim",
     priority = 1000,
     name = "catppuccin",
     enabled = true,
     opts = {
       term_colors = false,
+      show_end_of_buffer = true,
       transparent_background = false,
       integrations = {
         aerial = true,
@@ -45,7 +74,7 @@ return {
     },
     config = function(_, opts)
       require("catppuccin").setup(opts)
-      vim.cmd([[colorscheme catppuccin]])
+      -- vim.cmd.colorscheme("catppuccin")
     end,
   },
 
@@ -147,43 +176,5 @@ return {
         names = false,
       },
     },
-  },
-  {
-    "b0o/incline.nvim",
-    enabled = false,
-    opts = {
-      hide = {
-        cursorline = true,
-        focused_win = true,
-      },
-      window = {
-        padding = 0,
-        margin = { horizontal = 0 },
-      },
-      render = function(props)
-        local helpers = require("incline.helpers")
-        local filename =
-          vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
-        local ft_icon, ft_color =
-          require("nvim-web-devicons").get_icon_color(filename)
-        local modified = vim.bo[props.buf].modified
-        local buffer = {
-          ft_icon and {
-            " ",
-            ft_icon,
-            " ",
-            guibg = ft_color,
-            guifg = helpers.contrast_color(ft_color),
-          } or "",
-          " ",
-          { filename, gui = modified and "bold,italic" or "bold" },
-          " ",
-          guibg = "#44406e",
-        }
-        return buffer
-      end,
-    },
-    -- Optional: Lazy load Incline
-    event = { "BufReadPre", "BufNewFile" },
   },
 }
