@@ -170,21 +170,44 @@ return {
         gopls = {
           gofumpt = true,
         },
+
+        -- python
+        ruff = {
+          cmd_env = { RUFF_TRACE = "messages" },
+          init_options = {
+            settings = {
+              logLevel = "error",
+            },
+          },
+          on_attach = function(client, _)
+            client.server_capabilities.hoverProvider = false
+          end,
+        },
+
+        basedpyright = {
+          settings = {
+            basedpyright = {
+              analysis = {
+                typeCheckingMode = "standard",
+              },
+            },
+          },
+        },
       }
 
       local ensure_installed = {
-        -- "volar",
-        -- "ts_ls",
-        -- "html",
-        -- "eslint",
-        -- "cssls",
-        -- "clangd",
+        "volar",
+        "ts_ls",
+        "html",
+        "eslint",
+        "cssls",
+        "clangd",
         "lua_ls",
 
         "stylua", -- lua formatter
 
         -- debuggers
-        -- "js-debug-adapter",
+        "js-debug-adapter",
       }
 
       require("mason-tool-installer").setup({
