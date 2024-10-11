@@ -3,6 +3,7 @@ return {
     "no-clown-fiesta/no-clown-fiesta.nvim",
     enabled = true,
     opts = {
+      transparent = false,
       styles = {
         type = { fg = "#c49c64" },
       },
@@ -18,6 +19,7 @@ return {
       local bg = "#101010"
 
       vim.api.nvim_set_hl(0, "StatusLineNC", {
+        fg = "gray",
         bg = bg,
       })
 
@@ -31,7 +33,7 @@ return {
     "catppuccin/nvim",
     priority = 1000,
     name = "catppuccin",
-    enabled = true,
+    enabled = false,
     opts = {
       term_colors = false,
       show_end_of_buffer = true,
@@ -74,7 +76,7 @@ return {
     },
     config = function(_, opts)
       require("catppuccin").setup(opts)
-      -- vim.cmd.colorscheme("catppuccin")
+      vim.cmd.colorscheme("catppuccin")
     end,
   },
 
@@ -90,6 +92,11 @@ return {
     opts = {
       triggers = {
         { "<auto>", mode = "nxso" },
+      },
+      plugins = {
+        spelling = {
+          enabled = false, -- some bugs with this
+        },
       },
     },
     config = function(_, opts)

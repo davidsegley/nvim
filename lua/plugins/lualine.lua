@@ -4,10 +4,6 @@ return {
     event = "VeryLazy",
     enabled = false,
     opts = function()
-      local hide_in_width = function()
-        return vim.fn.winwidth(0) > 80
-      end
-
       return {
         options = {
           theme = "auto",
@@ -32,10 +28,6 @@ return {
               padding = { left = 1, right = 1 },
               colored = false,
             },
-            {
-              "branch",
-              cond = hide_in_width,
-            },
           },
           lualine_x = {
             {
@@ -48,36 +40,12 @@ return {
                 hint = " ",
               },
             },
-            -- {
-            --   function()
-            --     local msg = "no active lsp"
-            --     local buf_ft =
-            --       vim.api.nvim_get_option_value("filetype", { buf = 0 })
-            --     local clients = vim.lsp.get_clients()
-            --     if next(clients) == nil then
-            --       return msg
-            --     end
-            --     for _, client in ipairs(clients) do
-            --       local filetypes = client.config.filetypes
-            --       if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-            --         return client.name
-            --       end
-            --     end
-            --     return msg
-            --   end,
-            --   icon = "  LSP ~",
-            --   cond = hide_in_width,
-            -- },
             {
               "o:encoding",
-              -- fmt = string.upper,
-              color = { gui = "bold" },
             },
             {
               "fileformat",
               icons_enabled = false,
-              -- fmt = string.upper,
-              color = { gui = "bold" },
             },
             {
               "location",
