@@ -36,8 +36,8 @@ return {
       },
       {
         "nvim-treesitter/nvim-treesitter-context",
-        enabled = false,
-        opts = { mode = "cursor", max_lines = 6 },
+        enabled = true,
+        opts = { mode = "cursor" },
       },
       {
         "windwp/nvim-ts-autotag",
