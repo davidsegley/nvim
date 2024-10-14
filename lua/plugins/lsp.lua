@@ -11,7 +11,7 @@ return {
       { "folke/lazydev.nvim", opts = {} },
     },
     config = function()
-      local keymap = vim.keymap -- for conciseness
+      local keymap = vim.keymap
 
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup(

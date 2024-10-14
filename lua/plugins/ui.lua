@@ -2,6 +2,7 @@ return {
   {
     "no-clown-fiesta/no-clown-fiesta.nvim",
     enabled = true,
+    priority = 1000,
     opts = {
       transparent = false,
       styles = {
@@ -12,8 +13,10 @@ return {
       require("no-clown-fiesta").setup(opts)
       vim.cmd.colorscheme("no-clown-fiesta")
 
+      local color_column_bg = "#202020"
+
       vim.api.nvim_set_hl(0, "ColorColumn", {
-        bg = "#202020",
+        bg = color_column_bg,
       })
 
       local bg = "#101010"
