@@ -48,7 +48,6 @@ opt.grepformat = "%f:%l:%c:%m"
 opt.grepprg = "rg --vimgrep"
 opt.inccommand = "nosplit" -- preview incremental substitute
 opt.autowrite = true -- Enable auto write
--- opt.clipboard = "unnamedplus" -- Sync with system clipboard
 opt.pumblend = 10 -- Popup blend
 opt.pumheight = 10 -- Maximum number of entries in a popup
 opt.confirm = true -- Confirm to save changes before exiting modified buffer
@@ -56,7 +55,6 @@ opt.cursorline = true -- Enable highlighting of the current line
 opt.ignorecase = true -- Ignore case
 opt.smartcase = true
 opt.inccommand = "nosplit" -- preview incremental substitute
--- opt.laststatus = 3 -- global statusline
 opt.list = true -- Show some invisible characters
 
 opt.number = true
@@ -81,7 +79,6 @@ opt.backup = false
 
 opt.timeoutlen = 300 -- Lower than default (1000) to quickly trigger which-key
 opt.splitbelow = true -- Put new windows below current
-opt.splitkeep = "screen"
 opt.termguicolors = true -- True color support
 opt.undofile = true
 opt.updatetime = 200 -- Save swap file and trigger CursorHold
