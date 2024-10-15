@@ -14,21 +14,17 @@ return {
       vim.cmd.colorscheme("no-clown-fiesta")
 
       local color_column_bg = "#202020"
-
-      vim.api.nvim_set_hl(0, "ColorColumn", {
-        bg = color_column_bg,
-      })
-
       local bg = "#101010"
 
-      vim.api.nvim_set_hl(0, "StatusLineNC", {
-        fg = "gray",
-        bg = bg,
-      })
+      local set_hl = function(hl, styles)
+        return vim.api.nvim_set_hl(0, hl, styles)
+      end
 
-      vim.api.nvim_set_hl(0, "StatusLine", {
-        bg = bg,
-      })
+      set_hl("ColorColumn", { bg = color_column_bg })
+      set_hl("ColorColumn", { bg = color_column_bg })
+      set_hl("StatusLineNC", { fg = "gray", bg = bg })
+      set_hl("StatusLine", { bg = bg })
+      set_hl("NormalFloat", { bg = bg })
     end,
   },
 
