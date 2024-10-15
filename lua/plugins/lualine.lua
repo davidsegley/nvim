@@ -2,7 +2,7 @@ return {
   {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
-    enabled = false,
+    enabled = true,
     opts = function()
       return {
         options = {
@@ -18,7 +18,7 @@ return {
           lualine_a = {
             {
               "filename",
-              path = 0,
+              path = 1,
             },
           },
           lualine_b = {},

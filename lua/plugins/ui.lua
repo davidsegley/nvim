@@ -175,6 +175,16 @@ return {
   },
 
   {
+    "nvim-focus/focus.nvim",
+    event = { "VeryLazy" },
+    opts = {},
+    config = function(_, opts)
+      require("focus").setup(opts)
+      vim.cmd("FocusDisable")
+    end,
+  },
+
+  {
     "NvChad/nvim-colorizer.lua",
     event = { "BufReadPre", "BufNewFile" },
     opts = {

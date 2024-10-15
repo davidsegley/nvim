@@ -7,11 +7,6 @@ return {
     },
   },
   {
-    "folke/zen-mode.nvim",
-    opts = {},
-  },
-
-  {
     "echasnovski/mini.comment",
     event = { "BufReadPre", "BufNewFile" },
     opts = {
@@ -50,13 +45,6 @@ return {
     "windwp/nvim-autopairs",
     event = { "InsertEnter" },
     opts = {},
-  },
-
-  {
-    "nvim-focus/focus.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    config = true,
-    enabled = true,
   },
 
   {

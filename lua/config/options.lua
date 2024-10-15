@@ -5,7 +5,6 @@ vim.g.editorconfig = true
 -- Netrw
 vim.g.netrw_bufsettings = "noma nomod nu nobl nowrap ro"
 
--- Terminal
 if vim.fn.has("win32") == 1 then
   vim.cmd("let $LANG = 'en_US.UTF-8'", true)
 
@@ -19,6 +18,7 @@ if vim.fn.has("win32") == 1 then
   vim.o.shellxquote = ""
 else
   vim.g.shellflag = ""
+  vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 end
 
 local opt = vim.opt
@@ -59,13 +59,13 @@ opt.incsearch = true -- show matching patters as you type
 opt.inccommand = "nosplit" -- preview incremental substitute
 
 opt.undofile = true
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 
 -- Disable swap file
 opt.swapfile = false
 opt.backup = false
 
 opt.cc = "80"
+opt.signcolumn = "yes" -- always show the signcolumn
 
 opt.spelllang = {
   "es_mx",
