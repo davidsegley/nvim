@@ -1,7 +1,4 @@
 return {
-  -- ui components
-  { "MunifTanjim/nui.nvim", lazy = true },
-
   {
     "JoosepAlviste/nvim-ts-context-commentstring",
     lazy = true,

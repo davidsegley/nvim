@@ -22,6 +22,51 @@ else
 end
 
 local opt = vim.opt
+
+opt.mouse = "a" -- enable mouse
+opt.termguicolors = true -- True color support
+opt.confirm = true -- Confirm to save changes before exiting modified buffer
+
+opt.number = true
+opt.relativenumber = true -- Relative line numbers
+opt.wrap = false -- Disable line wrap
+
+-- ripgrep
+opt.grepformat = "%f:%l:%c:%m"
+opt.grepprg = "rg --vimgrep"
+
+opt.list = true -- Show some invisible characters
+opt.cursorline = true -- Highlight of the current line
+
+opt.sidescroll = 4
+opt.sidescrolloff = 8 -- Columns of context
+opt.splitright = true -- Put new windows right of current
+opt.splitbelow = true -- Put new windows below current
+
+opt.shiftwidth = 4 -- Size of an indent
+opt.tabstop = 4 -- Number of spaces tabs count for
+opt.softtabstop = 4
+opt.expandtab = true -- Use spaces instead of tabs
+opt.shiftround = true -- Round indent
+opt.autoindent = true
+opt.smartindent = true
+
+opt.ignorecase = true -- Ignore case
+opt.smartcase = true
+
+opt.hlsearch = false
+opt.incsearch = true -- show matching patters as you type
+opt.inccommand = "nosplit" -- preview incremental substitute
+
+opt.undofile = true
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+
+-- Disable swap file
+opt.swapfile = false
+opt.backup = false
+
+opt.cc = "80"
+
 opt.spelllang = {
   "es_mx",
   "en_us",
@@ -37,71 +82,6 @@ opt.sessionoptions = {
   "skiprtp",
   "folds",
 }
-
-opt.winminwidth = 5 -- Minimum window width
-opt.scrolloff = 4 -- Lines of context
-opt.sidescrolloff = 8 -- Columns of context
-opt.mouse = "a"
-opt.formatoptions = "jcroqlnt" -- tcqj
-opt.completeopt = "menu,menuone,noselect"
-opt.grepformat = "%f:%l:%c:%m"
-opt.grepprg = "rg --vimgrep"
-opt.inccommand = "nosplit" -- preview incremental substitute
-opt.autowrite = true -- Enable auto write
-opt.pumblend = 10 -- Popup blend
-opt.pumheight = 10 -- Maximum number of entries in a popup
-opt.confirm = true -- Confirm to save changes before exiting modified buffer
-opt.cursorline = true -- Enable highlighting of the current line
-opt.ignorecase = true -- Ignore case
-opt.smartcase = true
-opt.inccommand = "nosplit" -- preview incremental substitute
-opt.list = true -- Show some invisible characters
-
-opt.number = true
-opt.relativenumber = true -- Relative line numbers
-
-opt.signcolumn = "yes" -- Always show the signcolumn, otherwise it would shift the text each time
-opt.splitright = true -- Put new windows right of current
-
-opt.hlsearch = false
-
-opt.shiftwidth = 4 -- Size of an indent
-opt.tabstop = 4 -- Number of spaces tabs count for
-opt.softtabstop = 4
-opt.expandtab = true -- Use spaces instead of tabs
-opt.shiftround = true -- Round indent
-opt.autoindent = true
-opt.breakindent = true
-
--- Disable swap file
-opt.swapfile = false
-opt.backup = false
-
-opt.timeoutlen = 300 -- Lower than default (1000) to quickly trigger which-key
-opt.splitbelow = true -- Put new windows below current
-opt.termguicolors = true -- True color support
-opt.undofile = true
-opt.updatetime = 200 -- Save swap file and trigger CursorHold
-opt.virtualedit = "block" -- Allow cursor to move where there is no text in visual block mode
-opt.wrap = false -- Disable line wrap
-opt.fillchars = {
-  foldopen = "",
-  foldclose = "",
-  fold = " ",
-  foldsep = " ",
-  diff = "╱",
-}
-
-opt.cc = "80"
-
--- fold
-opt.foldmethod = "expr"
-opt.foldexpr = "nvim_treesitter#foldexpr()"
-opt.foldlevel = 99
-
-if vim.fn.has("nvim-0.10") == 1 then
-  opt.smoothscroll = true
-end
 
 vim.diagnostic.config({
   virtual_text = false,
