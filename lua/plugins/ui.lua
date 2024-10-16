@@ -174,14 +174,12 @@ return {
     end,
   },
 
+  -- Focus splits and sets signcolumn automatically
   {
     "nvim-focus/focus.nvim",
     event = { "VeryLazy" },
     opts = {},
-    config = function(_, opts)
-      require("focus").setup(opts)
-      vim.cmd("FocusDisable")
-    end,
+    config = true,
   },
 
   {
