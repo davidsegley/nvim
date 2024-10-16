@@ -83,6 +83,11 @@ opt.sessionoptions = {
   "folds",
 }
 
+opt.foldmethod = "expr"
+opt.foldexpr = "nvim_treesitter#foldexpr()"
+opt.foldlevel = 99
+opt.foldenable = false
+
 vim.diagnostic.config({
   virtual_text = false,
   signs = {

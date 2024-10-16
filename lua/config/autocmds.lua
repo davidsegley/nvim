@@ -97,3 +97,14 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.spell = true
   end,
 })
+
+-- Disable treesitter foldexpr if the file is too large
+vim.api.nvim_create_autocmd("BufReadPre", {
+  callback = function()
+    local max_filesize = 100 * 1024 -- 100 KB
+    local file_size = vim.fn.getfsize(vim.fn.expand("%:p"))
+    if file_size > max_filesize then
+      vim.opt.foldmethod = "manual"
+    end
+  end,
+})

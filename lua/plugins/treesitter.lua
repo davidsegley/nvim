@@ -6,7 +6,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     version = false, -- last release is way too old and doesn't work on Windows
     build = ":TSUpdate",
-    event = { "BufReadPre", "BufNewFile", "VeryLazy" },
+    event = { "BufReadPost", "BufNewFile", "VeryLazy" },
     enabled = vim.fn.executable("gcc") == 1,
     dependencies = {
       {
@@ -50,7 +50,10 @@ return {
       { "<bs>", desc = "Decrement selection", mode = "x" },
     },
     opts = {
-      highlight = { enable = true },
+      highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = false,
+      },
       indent = { enable = true },
       ensure_installed = {
         "bash",
