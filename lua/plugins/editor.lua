@@ -236,4 +236,6 @@ return {
       return keys
     end,
   },
+
+  { "mbbill/undotree" },
 }
