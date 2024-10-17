@@ -69,4 +69,8 @@ vim.keymap.set("n", "<leader><tab>n", "<cmd>tabNext<cr>", { desc = "Next Tab" })
 vim.keymap.set("n", "<leader><tab>p", "<cmd>tabprevious<cr>", { desc = "Prev Tab" })
 vim.keymap.set("n", "<leader><tab>c", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 
+vim.keymap.set({"n", "v"}, "<leader>y", [["+y]], { desc = "Yank to System Clipboard" })
+vim.keymap.set({"n", "v"}, "<leader>Y", [["+Y]], { desc = "Append to System Clipboard" })
+vim.keymap.set("n", "<leader>p", [["+p]], { desc = "Paste from System Clipboard" })
+
 --stylua: ignore end
