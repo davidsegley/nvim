@@ -18,7 +18,7 @@ return {
       ⢑⢕⠃⡈⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢃⢕⢕⢕
     ]]
 
-    logo = string.rep("\n", 3) .. logo .. "\n\n"
+    logo = string.rep("\n", 2) .. logo .. "\n\n"
 
     local opts = {
       theme = "doom",

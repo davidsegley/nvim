@@ -6,6 +6,8 @@ return {
     local conform = require("conform")
 
     conform.setup({
+      notify_no_formatters = false,
+
       formatters_by_ft = {
         -- javascript = { { "eslint", "" } },
         -- typescript = { { "eslint", "" } },

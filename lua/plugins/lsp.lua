@@ -43,7 +43,7 @@ return {
         float_border = "rounded",
         sign_text = {
           error = "✘",
-          warn = "▲",
+          warn = " ",
           hint = "⚑",
           info = "»",
         },
