@@ -42,10 +42,10 @@ return {
       lsp_zero.ui({
         float_border = "rounded",
         sign_text = {
-          error = " ",
-          warn = " ",
-          hint = " ",
-          info = " ",
+          error = "✘",
+          warn = "▲",
+          hint = "⚑",
+          info = "»",
         },
       })
 

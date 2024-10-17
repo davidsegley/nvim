@@ -33,12 +33,6 @@ return {
             {
               "diagnostics",
               colored = false,
-              symbols = {
-                error = " ",
-                warn = " ",
-                info = " ",
-                hint = " ",
-              },
             },
             {
               "o:encoding",
