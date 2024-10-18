@@ -36,9 +36,6 @@ return {
         capabilities = require("cmp_nvim_lsp").default_capabilities(),
       })
 
-      local lua_opts = lsp_zero.nvim_lua_ls()
-      require("lspconfig").lua_ls.setup(lua_opts)
-
       lsp_zero.ui({
         float_border = "rounded",
         sign_text = {
@@ -81,8 +78,6 @@ return {
         end,
       })
 
-      local nop = function() end
-
       require("mason").setup({})
       require("mason-lspconfig").setup({
         ensure_installed = { "lua_ls" },
@@ -91,7 +86,10 @@ return {
             require("lspconfig")[server_name].setup({})
           end,
 
-          lua_ls = nop,
+          lua_ls = function()
+            local lua_opts = lsp_zero.nvim_lua_ls()
+            require("lspconfig").lua_ls.setup(lua_opts)
+          end,
 
           ruff = function()
             require("lspconfig").ruff.setup({
