@@ -237,5 +237,19 @@ return {
     end,
   },
 
-  { "mbbill/undotree" },
+  {
+    "mbbill/undotree",
+    keys = function()
+      local keys = {
+        {
+          "<leader>u",
+          function()
+            vim.cmd("UndotreeToggle")
+          end,
+          desc = "Toggle UndoTree",
+        },
+      }
+      return keys
+    end,
+  },
 }
