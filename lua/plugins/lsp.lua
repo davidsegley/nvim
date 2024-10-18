@@ -7,7 +7,7 @@ return {
       "williamboman/mason-lspconfig.nvim",
       "hrsh7th/cmp-nvim-lsp",
     },
-    cmd = { "LspInfo", "LspInstall", "LspStart" },
+    cmd = { "LspInfo", "LspInstall", "LspStart", "Mason" },
     event = { "BufReadPre", "BufNewFile" },
     branch = "v4.x",
     config = function()
