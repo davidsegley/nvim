@@ -16,7 +16,6 @@ local function augroup(name)
   return vim.api.nvim_create_augroup("starb_" .. name, { clear = true })
 end
 
--- disable focus
 local g_focus_disable = augroup("focus_disable")
 vim.api.nvim_create_autocmd("WinEnter", {
   group = g_focus_disable,
@@ -42,15 +41,14 @@ vim.api.nvim_create_autocmd("FileType", {
   desc = "Disable focus autoresize for FileType",
 })
 
--- Highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
   group = augroup("highlight_yank"),
   callback = function()
     vim.highlight.on_yank()
   end,
+  desc = "Highlight on yank",
 })
 
--- Check if we need to reload the file when it changed
 vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
   group = augroup("checktime"),
   callback = function()
@@ -58,16 +56,16 @@ vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
       vim.cmd("checktime")
     end
   end,
+  desc = "Check if we need to reload the file when it changed",
 })
 
--- set spell of in toggleterm
 vim.api.nvim_create_autocmd("TermOpen", {
   group = augroup("term_no_spell"),
   pattern = "term://*toggleterm*",
   command = "setlocal nospell",
+  desc = "Set nospell in toggleterm",
 })
 
--- resize splits if window got resized
 vim.api.nvim_create_autocmd({ "VimResized" }, {
   group = augroup("resize_splits"),
   callback = function()
@@ -75,9 +73,9 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
     vim.cmd("tabdo wincmd =")
     vim.cmd("tabnext " .. current_tab)
   end,
+  desc = "Resize splits if window got resize",
 })
 
--- Auto create dir when saving a file, in case some intermediate directory does not exist
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   group = augroup("auto_create_dir"),
   callback = function(event)
@@ -87,18 +85,18 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     local file = vim.uv.fs_realpath(event.match) or event.match
     vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
   end,
+  desc = "Auto create dir when saving a file, in case some intermediate directory does not exist",
 })
 
--- check for spell in text filetypes
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup("wrap_spell"),
   pattern = { "gitcommit", "markdown" },
   callback = function()
     vim.opt_local.spell = true
   end,
+  desc = "Check for spell in text filetypes",
 })
 
--- Disable treesitter foldexpr if the file is too large
 vim.api.nvim_create_autocmd("BufReadPre", {
   callback = function()
     local max_filesize = 100 * 1024 -- 100 KB
@@ -107,4 +105,5 @@ vim.api.nvim_create_autocmd("BufReadPre", {
       vim.opt_local.foldmethod = "manual"
     end
   end,
+  desc = "Disable treesitter foldexpr if the file is too large",
 })
