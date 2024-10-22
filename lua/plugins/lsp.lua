@@ -81,56 +81,62 @@ return {
       require("mason").setup({})
       require("mason-lspconfig").setup({
         ensure_installed = { "lua_ls" },
-        handlers = {
-          function(server_name, _)
-            require("lspconfig")[server_name].setup({})
-          end,
+      })
 
-          lua_ls = function()
-            local lua_opts = lsp_zero.nvim_lua_ls()
-            require("lspconfig").lua_ls.setup(lua_opts)
-          end,
+      require("mason-lspconfig").setup_handlers({
+        function(server_name, _)
+          require("lspconfig")[server_name].setup({})
+        end,
 
-          ruff = function()
-            require("lspconfig").ruff.setup({
-              cmd_env = { RUFF_TRACE = "messages" },
-              init_options = {
-                settings = {
-                  logLevel = "error",
-                },
-              },
-              on_attach = function(client, _)
-                client.server_capabilities.hoverProvider = false
-              end,
-            })
-          end,
+        lua_ls = function()
+          local lua_opts = lsp_zero.nvim_lua_ls()
+          require("lspconfig").lua_ls.setup(lua_opts)
+        end,
 
-          basedpyright = function()
-            require("lspconfig").basedpyright.setup({
+        ruff = function()
+          require("lspconfig").ruff.setup({
+            cmd_env = { RUFF_TRACE = "messages" },
+            init_options = {
               settings = {
-                basedpyright = {
-                  analysis = {
-                    typeCheckingMode = "standard",
-                  },
-                },
+                logLevel = "error",
               },
-            })
-          end,
+            },
+            on_attach = function(client, _)
+              client.server_capabilities.hoverProvider = false
+            end,
+          })
+        end,
 
-          eslint = function()
-            require("lspconfig").eslint.setup({
-              settings = {
-                basedpyright = {
-                  analysis = {
-                    typeCheckingMode = "standard",
-                  },
+        basedpyright = function()
+          require("lspconfig").basedpyright.setup({
+            settings = {
+              basedpyright = {
+                analysis = {
+                  typeCheckingMode = "standard",
                 },
               },
-            })
-          end,
-        },
+            },
+          })
+        end,
+
+        eslint = function()
+          require("lspconfig").eslint.setup({
+            settings = {
+              basedpyright = {
+                analysis = {
+                  typeCheckingMode = "standard",
+                },
+              },
+            },
+          })
+        end,
 
         ts_ls = function()
+          local mason_registry = require("mason-registry")
+          local vue_language_server_path = mason_registry
+            .get_package("vue-language-server")
+            :get_install_path() .. "/node_modules/@vue/language-server"
+
           require("lspconfig").ts_ls.setup({
             init_options = {
               plugins = {
@@ -139,7 +145,7 @@ return {
                   -- NOTE: location can be global or nothing if it points to the
                   -- local node_modules of the project
                   name = "@vue/typescript-plugin",
-                  location = "",
+                  location = vue_language_server_path,
                   languages = { "javascript", "typescript", "vue" },
                 },
               },
