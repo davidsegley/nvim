@@ -15,6 +15,7 @@ return {
 
       local color_column_bg = "#202020"
       local bg = "#101010"
+      local orange = "#c49c64"
 
       local set_hl = function(hl, styles)
         return vim.api.nvim_set_hl(0, hl, styles)
@@ -25,6 +26,8 @@ return {
       set_hl("StatusLineNC", { fg = "gray", bg = bg })
       set_hl("StatusLine", { bg = bg })
       set_hl("NormalFloat", { bg = bg })
+      set_hl("@type.builtin", { fg = orange })
+      set_hl("@attribute", { fg = orange })
     end,
   },
 
