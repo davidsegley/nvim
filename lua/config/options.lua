@@ -23,6 +23,8 @@ end
 
 local opt = vim.opt
 
+opt.timeoutlen = 300
+
 opt.mouse = "a" -- enable mouse
 opt.termguicolors = true -- True color support
 opt.confirm = true -- Confirm to save changes before exiting modified buffer
