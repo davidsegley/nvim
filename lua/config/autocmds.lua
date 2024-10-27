@@ -99,7 +99,7 @@ vim.api.nvim_create_autocmd("FileType", {
 
 vim.api.nvim_create_autocmd("BufReadPre", {
   callback = function()
-    local max_filesize = 100 * 1024 -- 100 KB
+    local max_filesize = 1 * 1024 * 1024 -- 1 MB
     local file_size = vim.fn.getfsize(vim.fn.expand("%:p"))
     if file_size > max_filesize then
       vim.opt_local.foldmethod = "manual"
