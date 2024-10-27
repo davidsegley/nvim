@@ -6,6 +6,7 @@ return {
     "hrsh7th/cmp-path", -- source for file system paths
     "L3MON4D3/LuaSnip", -- snippet engine
     "saadparwaiz1/cmp_luasnip", -- for autocompletion
+    "windwp/nvim-autopairs",
   },
   config = function()
     local cmp = require("cmp")
@@ -13,9 +14,7 @@ return {
     local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
     cmp.setup({
-      completion = {
-        completeopt = "menu,menuone,preview,noselect",
-      },
+      completion = {},
       snippet = { -- configure how nvim-cmp interacts with snippet engine
         expand = function(args)
           luasnip.lsp_expand(args.body)
@@ -35,6 +34,7 @@ return {
         --  This will auto-import if your LSP supports it.
         --  This will expand snippets if the LSP sent a snippet.
         ["<C-y>"] = cmp.mapping.confirm({ select = true }),
+        ["<CR>"] = cmp.mapping.confirm({ select = true }),
 
         -- Manually trigger a completion from nvim-cmp.
         --  Generally you don't need this, because nvim-cmp will display
@@ -71,23 +71,7 @@ return {
         { name = "buffer" }, -- text within current buffer
       }),
     })
-    local handlers = require("nvim-autopairs.completion.handlers")
 
-    cmp.event:on(
-      "confirm_done",
-      cmp_autopairs.on_confirm_done({
-        filetypes = {
-          gdscript = {
-            ["("] = {
-              kind = {
-                cmp.lsp.CompletionItemKind.Function,
-                cmp.lsp.CompletionItemKind.Method,
-              },
-              handler = handlers["*"],
-            },
-          },
-        },
-      })
-    )
+    cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
   end,
 }

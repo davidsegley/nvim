@@ -42,12 +42,6 @@ return {
   },
 
   {
-    "windwp/nvim-autopairs",
-    event = { "InsertEnter" },
-    opts = {},
-  },
-
-  {
     "ggandor/leap.nvim",
     keys = {
       { "s", mode = { "n", "x", "o" }, desc = "Leap forward to" },
