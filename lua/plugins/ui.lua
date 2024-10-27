@@ -33,9 +33,8 @@ return {
 
   {
     "catppuccin/nvim",
-    priority = 1000,
     name = "catppuccin",
-    enabled = false,
+    enabled = true,
     opts = {
       term_colors = false,
       show_end_of_buffer = true,
@@ -78,7 +77,7 @@ return {
     },
     config = function(_, opts)
       require("catppuccin").setup(opts)
-      vim.cmd.colorscheme("catppuccin")
+      -- vim.cmd.colorscheme("catppuccin")
     end,
   },
 
