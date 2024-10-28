@@ -12,6 +12,10 @@ return {
     local cmp = require("cmp")
     local luasnip = require("luasnip")
     local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+    local autopairs = require("nvim-autopairs")
+
+    autopairs.setup()
+    luasnip.setup()
 
     cmp.setup({
       completion = {},
