@@ -48,6 +48,7 @@ return {
       { "S", mode = { "n", "x", "o" }, desc = "Leap backward to" },
       { "gs", mode = { "n", "x", "o" }, desc = "Leap from windows" },
     },
+    enabled = false,
     config = function(_, opts)
       local leap = require("leap")
       for k, v in pairs(opts) do
