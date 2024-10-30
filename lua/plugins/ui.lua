@@ -1,39 +1,20 @@
 return {
   {
     "no-clown-fiesta/no-clown-fiesta.nvim",
-    enabled = true,
-    priority = 1000,
     opts = {
       transparent = false,
       styles = {
         type = { fg = "#c49c64" },
       },
     },
-    config = function(_, opts)
-      require("no-clown-fiesta").setup(opts)
-
-      local color_column_bg = "#202020"
-      local bg = "#101010"
-      local orange = "#c49c64"
-
-      local set_hl = function(hl, styles)
-        return vim.api.nvim_set_hl(0, hl, styles)
-      end
-
-      set_hl("ColorColumn", { bg = color_column_bg })
-      set_hl("ColorColumn", { bg = color_column_bg })
-      set_hl("StatusLineNC", { fg = "gray", bg = bg })
-      set_hl("StatusLine", { bg = bg })
-      set_hl("NormalFloat", { bg = bg })
-      set_hl("@type.builtin", { fg = orange })
-      set_hl("@attribute", { fg = orange })
-    end,
+    config = true,
   },
 
   {
     "catppuccin/nvim",
     name = "catppuccin",
     enabled = true,
+    prioriy = 1000,
     opts = {
       term_colors = false,
       show_end_of_buffer = true,
