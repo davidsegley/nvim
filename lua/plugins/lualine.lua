@@ -15,14 +15,13 @@ return {
           section_separators = { left = "", right = "" },
         },
         sections = {
-          lualine_a = {
+          lualine_a = {},
+          lualine_b = {},
+          lualine_c = {
             {
               "filename",
               path = 0,
             },
-          },
-          lualine_b = {},
-          lualine_c = {
             {
               "filetype",
               padding = { left = 1, right = 1 },
