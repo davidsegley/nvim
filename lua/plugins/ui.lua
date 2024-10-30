@@ -11,7 +11,6 @@ return {
     },
     config = function(_, opts)
       require("no-clown-fiesta").setup(opts)
-      vim.cmd.colorscheme("no-clown-fiesta")
 
       local color_column_bg = "#202020"
       local bg = "#101010"
@@ -77,7 +76,7 @@ return {
     },
     config = function(_, opts)
       require("catppuccin").setup(opts)
-      -- vim.cmd.colorscheme("catppuccin")
+      vim.cmd.colorscheme("catppuccin")
     end,
   },
 
