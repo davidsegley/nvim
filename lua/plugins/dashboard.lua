@@ -43,7 +43,7 @@ return {
           local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
           -- stylua: ignore
           return {
-            "🦕 Neovim Loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms",
+            "🦕 " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms",
           }
         end,
       },
