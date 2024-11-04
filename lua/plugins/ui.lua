@@ -145,15 +145,6 @@ return {
     end,
   },
 
-  -- Focus splits and sets signcolumn automatically
-  {
-    "nvim-focus/focus.nvim",
-    event = { "VeryLazy" },
-    enabled = false,
-    opts = {},
-    config = true,
-  },
-
   {
     "NvChad/nvim-colorizer.lua",
     event = { "BufReadPre", "BufNewFile" },
