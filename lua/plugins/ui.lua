@@ -1,16 +1,5 @@
 return {
   {
-    "no-clown-fiesta/no-clown-fiesta.nvim",
-    opts = {
-      transparent = false,
-      styles = {
-        type = { fg = "#c49c64" },
-      },
-    },
-    config = true,
-  },
-
-  {
     "catppuccin/nvim",
     name = "catppuccin",
     enabled = true,
