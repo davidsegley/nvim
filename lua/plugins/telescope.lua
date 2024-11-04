@@ -14,6 +14,7 @@ return {
     { "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
   },
   keys = {
+    { "<C-p>", "<cmd>Telescope git_files<CR>", desc = "Telescope Git Files" },
     {
       "<leader>,",
       "<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>",
@@ -24,7 +25,7 @@ return {
     { "<leader>/", "<cmd>Telescope live_grep<cr>", desc = "Find String" },
     { "<leader>fc", util.config_files, desc = "Find Config File" },
     { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
-    { "<leader>ff", util.find_files, desc = "Find Files" },
+    { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
     {
       "<leader>:",
       "<cmd>Telescope command_history<cr>",
