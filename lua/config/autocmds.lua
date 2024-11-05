@@ -107,3 +107,17 @@ vim.api.nvim_create_autocmd("BufReadPre", {
   end,
   desc = "Disable treesitter foldexpr if the file is too large",
 })
+
+vim.api.nvim_create_autocmd("WinEnter", {
+  callback = function()
+    vim.opt.cursorline = true
+  end,
+  desc = "Enable cursorline on win enter",
+})
+
+vim.api.nvim_create_autocmd("WinLeave", {
+  callback = function()
+    vim.opt.cursorline = false
+  end,
+  desc = "Disable cursorline on win leave",
+})
