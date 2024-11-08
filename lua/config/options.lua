@@ -40,6 +40,7 @@ opt.grepprg = "rg --vimgrep"
 opt.list = true -- Show some invisible characters
 opt.cursorline = true -- Highlight of the current line
 
+vim.o.scrolloff = 4 -- minimal number of screen lines to keep above and below the cursor
 opt.sidescroll = 4
 opt.sidescrolloff = 8 -- Columns of context
 opt.splitright = true -- Put new windows right of current
