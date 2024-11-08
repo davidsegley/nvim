@@ -1,17 +1,17 @@
 return {
   {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    enabled = true,
-    prioriy = 1000,
-    opts = {
-      term_colors = false,
-      show_end_of_buffer = true,
-      transparent_background = false,
-    },
-    config = function(_, opts)
-      require("catppuccin").setup(opts)
-      vim.cmd.colorscheme("catppuccin")
+    "no-clown-fiesta/no-clown-fiesta.nvim",
+    priority = 1000,
+    config = function()
+      require("no-clown-fiesta").setup({
+        styles = {
+          type = {
+            fg = "#F4BF75",
+          },
+        },
+      })
+
+      vim.cmd.colorscheme("no-clown-fiesta")
     end,
   },
 
@@ -73,7 +73,6 @@ return {
           "mason",
           "notify",
           "toggleterm",
-          "lazyterm",
         },
       },
     },
