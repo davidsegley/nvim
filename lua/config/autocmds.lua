@@ -111,15 +111,19 @@ vim.api.nvim_create_autocmd("BufReadPre", {
 })
 
 -- https://github.com/mhinz/vim-galore?tab=readme-ov-file#smarter-cursorline
-vim.api.nvim_create_autocmd({ "WinEnter", "InsertLeave" }, {
+vim.api.nvim_create_autocmd("WinEnter", {
   callback = function()
+    if vim.bo.filetype == "dashboard" then
+      return
+    end
+
     if not vim.tbl_contains(ignore_buftypes, vim.bo.buftype) then
       vim.opt.cursorline = true
     end
   end,
 })
 
-vim.api.nvim_create_autocmd({ "WinLeave", "InsertEnter" }, {
+vim.api.nvim_create_autocmd("WinLeave", {
   callback = function()
     vim.opt.cursorline = false
   end,
