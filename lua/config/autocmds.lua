@@ -12,11 +12,13 @@ local ignore_filetypes = {
 }
 
 local ignore_buftypes = { "nofile", "prompt", "popup" }
+
 local function augroup(name)
   return vim.api.nvim_create_augroup("starb_" .. name, { clear = true })
 end
 
 local g_focus_disable = augroup("focus_disable")
+
 vim.api.nvim_create_autocmd("WinEnter", {
   group = g_focus_disable,
   callback = function(_)
@@ -106,4 +108,19 @@ vim.api.nvim_create_autocmd("BufReadPre", {
     end
   end,
   desc = "Disable treesitter foldexpr if the file is too large",
+})
+
+-- https://github.com/mhinz/vim-galore?tab=readme-ov-file#smarter-cursorline
+vim.api.nvim_create_autocmd({ "WinEnter", "InsertLeave" }, {
+  callback = function()
+    if not vim.tbl_contains(ignore_buftypes, vim.bo.buftype) then
+      vim.opt.cursorline = true
+    end
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "WinLeave", "InsertEnter" }, {
+  callback = function()
+    vim.opt.cursorline = false
+  end,
 })
