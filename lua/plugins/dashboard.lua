@@ -1,5 +1,3 @@
-local util = require("util.telescope")
-
 return {
   "nvimdev/dashboard-nvim",
   event = "VimEnter",
