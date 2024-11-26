@@ -97,8 +97,6 @@ return {
 
         lua_ls = function()
           local lua_opts = lsp_zero.nvim_lua_ls()
-          lua_opts.capabilities.offsetEncoding = { "utf-16" }
-
           require("lspconfig").lua_ls.setup(lua_opts)
         end,
 
@@ -129,15 +127,7 @@ return {
         end,
 
         eslint = function()
-          require("lspconfig").eslint.setup({
-            settings = {
-              basedpyright = {
-                analysis = {
-                  typeCheckingMode = "standard",
-                },
-              },
-            },
-          })
+          require("lspconfig").eslint.setup({})
         end,
 
         ts_ls = function()
