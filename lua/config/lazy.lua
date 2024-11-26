@@ -12,7 +12,7 @@ require("lazy").setup({
     { import = "plugins" },
   },
   install = {
-    colorscheme = { "no-clown-fiesta" },
+    colorscheme = { "catppuccin" },
   },
   performance = {
     rtp = {

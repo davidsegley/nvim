@@ -1,9 +1,16 @@
 return {
   {
-    "no-clown-fiesta/no-clown-fiesta.nvim",
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
     config = function()
-      require("no-clown-fiesta").setup({})
-      vim.cmd.colorscheme("no-clown-fiesta")
+      require("catppuccin").setup({
+        transparent_background = false, -- disables setting the background color.
+        show_end_of_buffer = true, -- shows the '~' characters after the end of buffers
+        no_italic = true, -- Force no italic
+        no_bold = false, -- Force no bold
+      })
+      vim.cmd.colorscheme("catppuccin")
     end,
   },
 
