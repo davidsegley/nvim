@@ -30,10 +30,18 @@ return {
         --stylua: ignore end
       end
 
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+      capabilities = vim.tbl_deep_extend("force", capabilities, {
+        offsetEncoding = { "utf-16" },
+        general = {
+          positionEncodings = { "utf-16" },
+        },
+      })
+
       lsp_zero.extend_lspconfig({
         sign_text = true,
         lsp_attach = lsp_attach,
-        capabilities = require("cmp_nvim_lsp").default_capabilities(),
+        capabilities = capabilities,
       })
 
       lsp_zero.ui({
@@ -89,6 +97,8 @@ return {
 
         lua_ls = function()
           local lua_opts = lsp_zero.nvim_lua_ls()
+          lua_opts.capabilities.offsetEncoding = { "utf-16" }
+
           require("lspconfig").lua_ls.setup(lua_opts)
         end,
 
