@@ -30,6 +30,10 @@ vim.keymap.set("n", "N", "'nN'[v:searchforward].'zv'", { expr = true, desc = "Pr
 vim.keymap.set("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
 vim.keymap.set("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
 
+-- https://github.com/mhinz/vim-galore?tab=readme-ov-file#saner-command-line-history
+vim.keymap.set("c", "<C-n>", function () return vim.fn.wildmenumode() == 1 and "C-n" or "<Down>" end, { expr = true, noremap = true })
+vim.keymap.set("c", "<C-p>", function () return vim.fn.wildmenumode() == 1 and "C-p" or "<Up>" end, { expr = true, noremap = true })
+
 -- better indenting
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
