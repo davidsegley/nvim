@@ -1,23 +1,14 @@
 return {
   {
-    "catppuccin/nvim",
-    name = "catppuccin",
+    "EdenEast/nightfox.nvim",
     priority = 1000,
     config = function()
-      require("catppuccin").setup({
-        transparent_background = false, -- disables setting the background color.
-        show_end_of_buffer = true, -- shows the '~' characters after the end of buffers
-        no_italic = true, -- Force no italic
-        no_bold = false, -- Force no bold
+      require("nightfox").setup({
+        options = {
+          transparent = true,
+        },
       })
-      vim.cmd.colorscheme("catppuccin")
-    end,
-  },
-
-  {
-    "aktersnurra/no-clown-fiesta.nvim",
-    config = function()
-      require("no-clown-fiesta").setup({})
+      vim.cmd.colorscheme("terafox")
     end,
   },
 
