@@ -23,6 +23,7 @@ return {
     ]]
 
     dashboard.section.header.val = vim.split(logo, "\n")
+    dashboard.section.header.opts.hl = "AlphaHeader"
     alpha.setup(dashboard.opts)
   end,
 }

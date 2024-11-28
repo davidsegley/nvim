@@ -2,15 +2,13 @@ return {
   {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    enabled = true,
+    enabled = false,
     opts = function()
       return {
         options = {
           theme = "auto",
           globalstatus = false,
-          disabled_filetypes = {
-            statusline = { "dashboard", "alpha", "starter" },
-          },
+          disabled_filetypes = {},
           component_separators = { left = "", right = "" },
           section_separators = { left = "", right = "" },
         },
@@ -20,7 +18,7 @@ return {
           lualine_c = {
             {
               "filename",
-              path = 0,
+              path = 1,
             },
             {
               "filetype",

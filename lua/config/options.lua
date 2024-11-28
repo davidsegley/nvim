@@ -65,7 +65,7 @@ opt.undofile = true
 opt.swapfile = false
 opt.backup = false
 
-opt.cc = "80"
+-- opt.cc = "80"
 opt.signcolumn = "yes" -- always show the signcolumn
 
 opt.spelllang = {
