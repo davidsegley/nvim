@@ -29,6 +29,11 @@ return {
         ["<C-n>"] = cmp.mapping.select_next_item(),
         -- Select the previous item
         ["<C-p>"] = cmp.mapping.select_prev_item(),
+        --
+        -- Select the next item
+        ["<C-j>"] = cmp.mapping.select_next_item(),
+        -- Select the previous item
+        ["<C-k>"] = cmp.mapping.select_prev_item(),
 
         -- Scroll the documentation window [b]ack / [f]orward
         ["<C-u>"] = cmp.mapping.scroll_docs(-4),
