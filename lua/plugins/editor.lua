@@ -98,21 +98,6 @@ return {
   },
 
   {
-    "RRethy/vim-illuminate",
-    event = "BufReadPre",
-    opts = {
-      delay = 200,
-      large_file_cutoff = 2000,
-      large_file_overrides = {
-        providers = { "lsp" },
-      },
-    },
-    config = function(_, opts)
-      require("illuminate").configure(opts)
-    end,
-  },
-
-  {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
     opts = {
@@ -123,7 +108,7 @@ return {
     keys = function()
       local keys = {
         {
-          "<leader>H",
+          "<leader>a",
           function()
             require("harpoon"):list():add()
           end,

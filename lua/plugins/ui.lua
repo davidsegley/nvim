@@ -5,7 +5,7 @@ return {
     config = function()
       require("nightfox").setup({
         options = {
-          transparent = true,
+          transparent = not vim.g.neovide,
         },
       })
       vim.cmd.colorscheme("terafox")
@@ -15,6 +15,14 @@ return {
   {
     "stevearc/dressing.nvim",
     event = "VeryLazy",
+  },
+
+  {
+    "echasnovski/mini.cursorword",
+    version = false,
+    config = function()
+      require("mini.cursorword").setup({})
+    end,
   },
 
   {
