@@ -12,7 +12,7 @@ require("lazy").setup({
     { import = "plugins" },
   },
   install = {
-    colorscheme = { "terafox" },
+    colorscheme = { "catppuccin" },
   },
   performance = {
     rtp = {
