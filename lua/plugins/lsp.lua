@@ -53,21 +53,7 @@ return {
         },
       })
 
-      lsp_zero.configure("gdscript", {
-        -- NOTE: This only works for windows
-
-        -- Put this flags in godot
-        -- Use External Editor: On
-        -- Exec Path: nvim
-        -- Exec Flags: --server "\\\\.\\pipe\\godot.pipe" --remote-send "<C-\><C-N>:n {file}<CR>:call cursor({line},{col})<CR>"
-        cmd = { "ncat", "localhost", "6005" },
-
-        --cmd = vim.lsp.rpc.connect("172.19.240.1", 6005),
-        root_dir = function()
-          return vim.fs.dirname(
-            vim.fs.find({ "project.godot", ".git" }, { upward = true })[1]
-          )
-        end,
+      local gdscript_config = {
         on_attach = function()
           local pipe = [[\\.\pipe\godot.pipe]]
           if vim.fn.has("win32") == 0 then
@@ -83,7 +69,23 @@ return {
             print("Godot Language Server Connected")
           end
         end,
-      })
+      }
+
+      if vim.fn.has("win32") == 1 then
+        gdscript_config.cmd = { "ncat", "localhost", "6005" }
+        gdscript_config.root_dir = function()
+          return vim.fs.dirname(
+            vim.fs.find({ "project.godot", ".git" }, { upward = true })[1]
+          )
+        end
+      end
+
+      -- Put this flags in godot
+      -- Use External Editor: On
+      -- Exec Path: nvim
+      -- Exec Flags(windows): --server "\\\\.\\pipe\\godot.pipe" --remote-send "<C-\><C-N>:n {file}<CR>:call cursor({line},{col})<CR>"
+      -- Exec Flags(linux): --server "/tmp/godot.pipe" --remote-send "<C-\><C-N>:n {file}<CR>:call cursor({line},{col})<CR>"
+      lsp_zero.configure("gdscript", gdscript_config)
 
       require("mason").setup({})
       require("mason-lspconfig").setup({
