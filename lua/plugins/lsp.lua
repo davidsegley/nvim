@@ -82,9 +82,10 @@ return {
 
       -- Put this flags in godot
       -- Use External Editor: On
-      -- Exec Path: nvim
-      -- Exec Flags(windows): --server "\\\\.\\pipe\\godot.pipe" --remote-send "<C-\><C-N>:n {file}<CR>:call cursor({line},{col})<CR>"
-      -- Exec Flags(linux): --server "/tmp/godot.pipe" --remote-send "<C-\><C-N>:n {file}<CR>:call cursor({line},{col})<CR>"
+      -- Exec Path: full_path_to_nvim
+      -- Exec Flags(windows): --server "\\\\.\\pipe\\godot.pipe" --remote-send "<cmd>:n {file}<cr>:call cursor({line},{col})<cr>"
+      -- Exec Flags(linux): --server "/tmp/godot.pipe" --remote-send "<cmd>:n {file}<cr>:call cursor({line},{col})<cr>"
+
       lsp_zero.configure("gdscript", gdscript_config)
 
       require("mason").setup({})
