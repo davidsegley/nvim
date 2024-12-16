@@ -9,16 +9,14 @@ return {
       notify_no_formatters = false,
 
       formatters_by_ft = {
-        -- javascript = { { "eslint", "" } },
-        -- typescript = { { "eslint", "" } },
-        -- vue = { "eslint" },
-        svelte = { "prettier" },
-        css = { "prettier" },
-        -- html = { "volar" },
-        json = { "prettier" },
+        javascript = { "eslint", stop_after_first = true },
+        typescript = { "eslint", stop_after_first = true },
+        vue = { "eslint", stop_after_first = true },
+
         lua = { "stylua" },
         go = { "goimports", "gofumpt" },
       },
+
       format_on_save = function(bufnr)
         if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
           return
