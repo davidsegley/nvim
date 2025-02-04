@@ -41,6 +41,20 @@ return {
     },
   },
 
+  -- lazy.nvim
+  {
+    "folke/snacks.nvim",
+    ---@type snacks.Config
+    opts = {
+      bigfile = {
+        notify = false,
+        -- your bigfile configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      },
+    },
+  },
+
   {
     "echasnovski/mini.bufremove",
     keys = {
@@ -134,22 +148,6 @@ return {
         })
       end
 
-      return keys
-    end,
-  },
-
-  {
-    "mbbill/undotree",
-    keys = function()
-      local keys = {
-        {
-          "<leader>u",
-          function()
-            vim.cmd("UndotreeToggle")
-          end,
-          desc = "Toggle UndoTree",
-        },
-      }
       return keys
     end,
   },
