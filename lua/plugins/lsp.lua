@@ -98,6 +98,24 @@ return {
           require("lspconfig")[server_name].setup({})
         end,
 
+        clangd = function()
+          require("lspconfig").clangd.setup({
+            on_attach = function(_, bufnr)
+              vim.keymap.set(
+                "n",
+                "<leader>t",
+                "<cmd>ClangdSwitchSourceHeader<cr>",
+                {
+                  noremap = true,
+                  silent = true,
+                  buffer = bufnr,
+                  desc = "Toggle Header/Source",
+                }
+              )
+            end,
+          })
+        end,
+
         lua_ls = function()
           local lua_opts = lsp_zero.nvim_lua_ls()
           require("lspconfig").lua_ls.setup(lua_opts)
