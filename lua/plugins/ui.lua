@@ -6,7 +6,7 @@ return {
     enabled = true,
     config = function()
       require("catppuccin").setup({
-        transparent_background = true, -- disables setting the background color.
+        transparent_background = not vim.g.neovide, -- disables setting the background color.
         show_end_of_buffer = true, -- shows the '~' characters after the end of buffers
         term_colors = false, -- sets terminal colors (e.g. `g:terminal_color_0`)
         no_italic = true, -- Force no italic

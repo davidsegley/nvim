@@ -48,7 +48,7 @@ return {
           lualine_y = {},
           lualine_z = {},
         },
-        extensions = { "lazy" },
+        -- extensions = { "lazy" },
       }
     end,
   },
