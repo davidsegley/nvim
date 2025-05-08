@@ -17,7 +17,7 @@ return {
         local opts = { noremap = true, silent = true, buffer = bufnr }
           --stylua: ignore start
           vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
-          vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
+          vim.keymap.set('n', 'gd', '<cmd>Telescope lsp_definitions reuse_win=true<cr>', opts)
           vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
           vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
           vim.keymap.set('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
@@ -29,6 +29,7 @@ return {
           vim.keymap.set("n", "<leader>cD", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
         --stylua: ignore end
       end
+      require("mason").setup({})
 
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
       capabilities = vim.tbl_deep_extend("force", capabilities, {
@@ -88,98 +89,80 @@ return {
 
       lsp_zero.configure("gdscript", gdscript_config)
 
-      require("mason").setup({})
-      require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls" },
+      local lua_opts = lsp_zero.nvim_lua_ls()
+      vim.lsp.config("lua_ls", lua_opts)
+
+      vim.lsp.config("ts_ls", {
+        on_attach = function(client)
+          client.server_capabilities.documentFormattingProvider = false
+          client.server_capabilities.documentFormattingRangeProvider = false
+        end,
+        init_options = {
+          plugins = {
+            {
+              name = "@vue/typescript-plugin",
+              location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
+              languages = { "javascript", "typescript", "vue" },
+            },
+          },
+        },
+        filetypes = {
+          "javascript",
+          "typescript",
+          "vue",
+        },
       })
 
-      require("mason-lspconfig").setup_handlers({
-        function(server_name, _)
-          require("lspconfig")[server_name].setup({})
+      vim.lsp.config("volar", {
+        on_attach = function(client)
+          client.server_capabilities.documentFormattingProvider = false
+          client.server_capabilities.documentFormattingRangeProvider = false
         end,
+      })
 
-        clangd = function()
-          require("lspconfig").clangd.setup({
-            on_attach = function(_, bufnr)
-              vim.keymap.set(
-                "n",
-                "<leader>t",
-                "<cmd>ClangdSwitchSourceHeader<cr>",
-                {
-                  noremap = true,
-                  silent = true,
-                  buffer = bufnr,
-                  desc = "Toggle Header/Source",
-                }
-              )
-            end,
-          })
+      vim.lsp.config("eslint", {})
+
+      vim.lsp.config("clangd", {
+        on_attach = function(_, bufnr)
+          vim.keymap.set(
+            "n",
+            "<leader>t",
+            "<cmd>ClangdSwitchSourceHeader<cr>",
+            {
+              noremap = true,
+              silent = true,
+              buffer = bufnr,
+              desc = "Toggle Header/Source",
+            }
+          )
         end,
+      })
 
-        lua_ls = function()
-          local lua_opts = lsp_zero.nvim_lua_ls()
-          require("lspconfig").lua_ls.setup(lua_opts)
+      vim.lsp.config("ruff", {
+        cmd_env = { RUFF_TRACE = "messages" },
+        init_options = {
+          settings = {
+            logLevel = "error",
+          },
+        },
+        on_attach = function(client, _)
+          client.server_capabilities.hoverProvider = false
         end,
+      })
 
-        ruff = function()
-          require("lspconfig").ruff.setup({
-            cmd_env = { RUFF_TRACE = "messages" },
-            init_options = {
-              settings = {
-                logLevel = "error",
-              },
+      vim.lsp.config("basedpyright", {
+        settings = {
+          basedpyright = {
+            analysis = {
+              typeCheckingMode = "standard",
             },
-            on_attach = function(client, _)
-              client.server_capabilities.hoverProvider = false
-            end,
-          })
-        end,
+          },
+        },
+      })
 
-        basedpyright = function()
-          require("lspconfig").basedpyright.setup({
-            settings = {
-              basedpyright = {
-                analysis = {
-                  typeCheckingMode = "standard",
-                },
-              },
-            },
-          })
-        end,
-
-        eslint = function()
-          require("lspconfig").eslint.setup({})
-        end,
-
-        ts_ls = function()
-          local mason_registry = require("mason-registry")
-          local vue_language_server_path = mason_registry
-            .get_package("vue-language-server")
-            :get_install_path() .. "/node_modules/@vue/language-server"
-
-          require("lspconfig").ts_ls.setup({
-            init_options = {
-              plugins = {
-                {
-                  -- Vue
-                  -- NOTE: location can be global or nothing if it points to the
-                  -- local node_modules of the project
-                  name = "@vue/typescript-plugin",
-                  location = vue_language_server_path,
-                  languages = { "javascript", "typescript", "vue" },
-                },
-              },
-            },
-            filetypes = {
-              "javascript",
-              "typescript",
-              "vue",
-            },
-            on_attach = function(client)
-              client.server_capabilities.documentFormattingProvider = false
-            end,
-          })
-        end,
+      require("mason-lspconfig").setup({
+        ensure_installed = { "lua_ls" },
+        automatic_enable = true,
       })
     end,
   },
