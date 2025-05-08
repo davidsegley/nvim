@@ -41,12 +41,13 @@ return {
             {
               "location",
             },
+          },
+          lualine_y = {},
+          lualine_z = {
             {
               "progress",
             },
           },
-          lualine_y = {},
-          lualine_z = {},
         },
         -- extensions = { "lazy" },
       }

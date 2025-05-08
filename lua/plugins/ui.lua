@@ -70,9 +70,12 @@ return {
         char = "│",
         tab_char = "│",
       },
-      scope = { enabled = false },
+      scope = {
+        enabled = false,
+      },
       exclude = {
         filetypes = {
+          "sql",
           "help",
           "alpha",
           "dashboard",
