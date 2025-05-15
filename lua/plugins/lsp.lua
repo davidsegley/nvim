@@ -16,7 +16,12 @@ return {
       local lsp_attach = function(_, bufnr)
         local opts = { noremap = true, silent = true, buffer = bufnr }
           --stylua: ignore start
-          vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
+          vim.keymap.set('n', 'K', function ()
+            vim.lsp.buf.hover({
+              border = "single"
+            })
+          end, opts)
+
           vim.keymap.set('n', 'gd', '<cmd>Telescope lsp_definitions reuse_win=true<cr>', opts)
           vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
           vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
