@@ -32,6 +32,7 @@ return {
   {
     "folke/persistence.nvim",
     event = "BufReadPre",
+    enabled = false,
     opts = { options = vim.opt.sessionoptions:get() },
     -- stylua: ignore
     keys = {
