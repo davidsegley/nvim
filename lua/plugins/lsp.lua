@@ -12,28 +12,6 @@ return {
     branch = "v4.x",
     config = function()
       local lsp_zero = require("lsp-zero")
-
-      local lsp_attach = function(_, bufnr)
-        local opts = { noremap = true, silent = true, buffer = bufnr }
-          --stylua: ignore start
-          vim.keymap.set('n', 'K', function ()
-            vim.lsp.buf.hover({
-              border = "single"
-            })
-          end, opts)
-
-          vim.keymap.set('n', 'gd', '<cmd>Telescope lsp_definitions reuse_win=true<cr>', opts)
-          vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
-          vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
-          vim.keymap.set('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
-          vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
-          vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
-          vim.keymap.set('n', '<leader>cr', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-          vim.keymap.set({'n', 'x'}, '<leader>cf', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
-          vim.keymap.set({'n', 'v'}, '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
-          vim.keymap.set("n", "<leader>cD", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
-        --stylua: ignore end
-      end
       require("mason").setup({})
 
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -46,7 +24,6 @@ return {
 
       lsp_zero.extend_lspconfig({
         sign_text = true,
-        lsp_attach = lsp_attach,
         capabilities = capabilities,
       })
 
@@ -94,14 +71,10 @@ return {
 
       lsp_zero.configure("gdscript", gdscript_config)
 
-      local lua_opts = lsp_zero.nvim_lua_ls()
-      vim.lsp.config("lua_ls", lua_opts)
+      -- local lua_opts = lsp_zero.nvim_lua_ls()
+      -- vim.lsp.config("lua_ls", lua_opts)
 
       vim.lsp.config("ts_ls", {
-        on_attach = function(client)
-          client.server_capabilities.documentFormattingProvider = false
-          client.server_capabilities.documentFormattingRangeProvider = false
-        end,
         init_options = {
           plugins = {
             {
@@ -116,31 +89,6 @@ return {
           "typescript",
           "vue",
         },
-      })
-
-      vim.lsp.config("vue_ls", {
-        on_attach = function(client)
-          client.server_capabilities.documentFormattingProvider = false
-          client.server_capabilities.documentFormattingRangeProvider = false
-        end,
-      })
-
-      vim.lsp.config("eslint", {})
-
-      vim.lsp.config("clangd", {
-        on_attach = function(_, bufnr)
-          vim.keymap.set(
-            "n",
-            "<leader>t",
-            "<cmd>ClangdSwitchSourceHeader<cr>",
-            {
-              noremap = true,
-              silent = true,
-              buffer = bufnr,
-              desc = "Toggle Header/Source",
-            }
-          )
-        end,
       })
 
       vim.lsp.config("ruff", {

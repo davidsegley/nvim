@@ -25,19 +25,5 @@ return {
     dashboard.section.header.val = vim.split(logo, "\n")
     dashboard.section.header.opts.hl = "AlphaHeader"
     alpha.setup(dashboard.opts)
-
-    vim.api.nvim_create_autocmd("User", {
-      pattern = "AlphaReady",
-      callback = function()
-        vim.o.laststatus = 0
-      end,
-    })
-
-    vim.api.nvim_create_autocmd("BufUnload", {
-      buffer = 0,
-      callback = function()
-        vim.o.laststatus = 2
-      end,
-    })
   end,
 }
