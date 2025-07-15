@@ -1,9 +1,3 @@
-vim.lsp.enable("lua_ls")
-vim.lsp.enable("clangd")
-vim.lsp.enable("eslint")
-vim.lsp.enable("ts_ls")
-vim.lsp.enable("vue_ls")
-
 local function setup_client(args)
   local client = vim.lsp.get_client_by_id(args.data.client_id)
 
@@ -12,6 +6,10 @@ local function setup_client(args)
   end
 
   if client.name == "ts_ls" then
+    client.server_capabilities.documentFormattingProvider = false
+  end
+
+  if client.name == "vtsls" then
     client.server_capabilities.documentFormattingProvider = false
   end
 
@@ -28,7 +26,10 @@ local function setup_client(args)
     })
   end
 
-  if client:supports_method("textDocument/inlayHint") then
+  if
+    client:supports_method("textDocument/inlayHint")
+    and client.name ~= "clangd"
+  then
     vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
   end
 
