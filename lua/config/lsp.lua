@@ -28,7 +28,10 @@ local function setup_client(args)
     })
   end
 
-  if client:supports_method("textDocument/inlayHint") then
+  if
+    client:supports_method("textDocument/inlayHint")
+    and client.name ~= "clangd"
+  then
     vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
   end
 
