@@ -4,7 +4,6 @@ return {
     dependencies = {
       "neovim/nvim-lspconfig",
       "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
       "hrsh7th/cmp-nvim-lsp",
     },
     cmd = { "LspInfo", "LspInstall", "LspStart", "Mason" },
@@ -79,7 +78,7 @@ return {
           plugins = {
             {
               name = "@vue/typescript-plugin",
-              location = "/home/starb/.local/share/nvm/v20.18.0/lib/node_modules/@vue/typescript-plugin",
+              location = "/home/starb/.local/share/nvm/v22.17.1/lib/node_modules/@vue/typescript-plugin",
               languages = { "javascript", "typescript", "vue" },
             },
           },
@@ -113,10 +112,10 @@ return {
         },
       })
 
-      require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls" },
-        automatic_enable = true,
-      })
+      -- require("mason-lspconfig").setup({
+      --   ensure_installed = { "lua_ls" },
+      --   automatic_enable = true,
+      -- })
 
       vim.lsp.config("vtsls", {
         settings = {
@@ -125,7 +124,7 @@ return {
               globalPlugins = {
                 {
                   name = "@vue/typescript-plugin",
-                  location = "/home/starb/.local/share/nvm/v20.18.0/lib/node_modules/@vue/typescript-plugin",
+                  location = "/home/starb/.local/share/nvm/v22.17.1/lib/node_modules/@vue/typescript-plugin",
                   languages = { "vue" },
                   configNamespace = "typescript",
                 },
@@ -174,12 +173,15 @@ return {
         end,
       })
 
+      vim.lsp.enable("gopls")
       vim.lsp.enable("ts_ls", false)
       vim.lsp.enable("lua_ls")
       vim.lsp.enable("clangd")
       vim.lsp.enable("eslint")
       vim.lsp.enable("vtsls")
       vim.lsp.enable("vue_ls")
+      vim.lsp.enable("basedpyright")
+      vim.lsp.enable("ruff")
     end,
   },
 }

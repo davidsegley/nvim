@@ -26,12 +26,7 @@ local function setup_client(args)
     })
   end
 
-  if
-    client:supports_method("textDocument/inlayHint")
-    and client.name ~= "clangd"
-  then
-    vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
-  end
+  vim.lsp.inlay_hint.enable(false, { bufnr = args.buf })
 
   if client:supports_method("textDocument/documentHighlight") then
     local autocmd = vim.api.nvim_create_autocmd
