@@ -78,6 +78,7 @@ return {
             "Method",
             "Struct",
             "Trait",
+            "Variable",
           },
         })
       end,
