@@ -1,19 +1,21 @@
 return {
   {
-    "VonHeikemen/lsp-zero.nvim",
+    "neovim/nvim-lspconfig",
     dependencies = {
-      "neovim/nvim-lspconfig",
       "williamboman/mason.nvim",
-      "hrsh7th/cmp-nvim-lsp",
+      "saghen/blink.cmp",
     },
     cmd = { "LspInfo", "LspInstall", "LspStart", "Mason" },
     event = { "BufReadPre", "BufNewFile" },
-    branch = "v4.x",
     config = function()
-      local lsp_zero = require("lsp-zero")
       require("mason").setup({})
 
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+      capabilities = vim.tbl_deep_extend("force", capabilities, {
+        require("blink.cmp").get_lsp_capabilities({}, false),
+      })
+
       capabilities = vim.tbl_deep_extend("force", capabilities, {
         offsetEncoding = { "utf-16" },
         general = {
@@ -21,19 +23,7 @@ return {
         },
       })
 
-      lsp_zero.extend_lspconfig({
-        sign_text = true,
-        capabilities = capabilities,
-      })
-
-      lsp_zero.ui({
-        sign_text = {
-          error = "✘",
-          warn = " ",
-          hint = "⚑",
-          info = "»",
-        },
-      })
+      vim.lsp.config("*", capabilities)
 
       local gdscript_config = {
         on_attach = function()
@@ -68,21 +58,9 @@ return {
       -- Exec Flags(windows): --server "\\\\.\\pipe\\godot.pipe" --remote-send "<cmd>:n {file}<cr>:call cursor({line},{col})<cr>"
       -- Exec Flags(linux): --server "/tmp/godot.pipe" --remote-send "<cmd>:n {file}<cr>:call cursor({line},{col})<cr>"
 
-      lsp_zero.configure("gdscript", gdscript_config)
-
-      -- local lua_opts = lsp_zero.nvim_lua_ls()
-      -- vim.lsp.config("lua_ls", lua_opts)
+      vim.lsp.config("gdscript", gdscript_config)
 
       vim.lsp.config("ts_ls", {
-        init_options = {
-          plugins = {
-            {
-              name = "@vue/typescript-plugin",
-              location = "/home/starb/.local/share/nvm/v22.17.1/lib/node_modules/@vue/typescript-plugin",
-              languages = { "javascript", "typescript", "vue" },
-            },
-          },
-        },
         filetypes = {
           "javascript",
           "typescript",
