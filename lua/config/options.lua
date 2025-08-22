@@ -23,6 +23,7 @@ end
 
 local opt = vim.opt
 
+opt.spell = true
 opt.cc = "80"
 opt.mouse = "a" -- enable mouse
 opt.termguicolors = true -- True color support
@@ -54,7 +55,7 @@ opt.shiftround = true -- Round indent
 opt.autoindent = true
 opt.smartindent = true
 
-opt.ignorecase = true -- Ignore case
+opt.ignorecase = true
 opt.smartcase = true
 
 opt.hlsearch = false
@@ -100,14 +101,6 @@ opt.fillchars = {
 
 vim.diagnostic.config({
   virtual_text = false,
-  signs = {
-    text = {
-      [vim.diagnostic.severity.ERROR] = "✘",
-      [vim.diagnostic.severity.WARN] = " ",
-      [vim.diagnostic.severity.HINT] = "⚑",
-      [vim.diagnostic.severity.INFO] = "»",
-    },
-  },
 })
 
 if vim.g.neovide then
