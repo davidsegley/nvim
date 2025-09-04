@@ -1,9 +1,26 @@
 return {
   {
+    "no-clown-fiesta/no-clown-fiesta.nvim",
+    name = "no-clown-fiesta",
+    priority = 1000,
+    enabled = true,
+    config = function()
+      require("no-clown-fiesta").setup({
+        transparent = false,
+      })
+
+      local palette = require("no-clown-fiesta.palette")
+      vim.cmd.colorscheme("no-clown-fiesta")
+      vim.api.nvim_set_hl(0, "StatusLine", { fg = palette.fg })
+      vim.api.nvim_set_hl(0, "StatusLineNC", { fg = palette.gray })
+    end,
+  },
+
+  {
     "catppuccin/nvim",
     name = "catppuccin",
     priority = 1000,
-    enabled = true,
+    enabled = false,
     config = function()
       require("catppuccin").setup({
         transparent_background = not vim.g.neovide, -- disables setting the background color.
