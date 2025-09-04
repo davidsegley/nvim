@@ -4,6 +4,10 @@ return {
     event = "InsertEnter",
     version = "1.*",
     opts = {
+      cmdline = {
+        keymap = { preset = "inherit" },
+        completion = { menu = { auto_show = false } },
+      },
       keymap = { preset = "default" },
       signature = { enabled = true },
       completion = {
