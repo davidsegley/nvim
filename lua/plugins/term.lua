@@ -4,7 +4,7 @@ return {
     event = "VeryLazy",
     version = "*",
     opts = {
-      open_mapping = "<c-_>",
+      open_mapping = "<c-\\>",
       autochdir = true,
       start_in_insert = true,
       size = function(term)
