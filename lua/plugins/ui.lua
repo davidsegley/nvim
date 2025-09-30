@@ -9,8 +9,9 @@ return {
         transparent = false,
       })
 
-      local palette = require("no-clown-fiesta.palette")
       vim.cmd.colorscheme("no-clown-fiesta")
+
+      local palette = require("no-clown-fiesta.palettes")
       vim.api.nvim_set_hl(0, "StatusLine", { fg = palette.fg })
       vim.api.nvim_set_hl(0, "StatusLineNC", { fg = palette.gray })
     end,
