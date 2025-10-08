@@ -4,11 +4,15 @@ return {
     event = "InsertEnter",
     version = "1.*",
     opts = {
+      keymap = {
+        preset = "default",
+        ["<C-u>"] = { "scroll_documentation_up", "fallback" },
+        ["<C-d>"] = { "scroll_documentation_down", "fallback" },
+      },
       cmdline = {
         keymap = { preset = "inherit" },
         completion = { menu = { auto_show = false } },
       },
-      keymap = { preset = "default" },
       signature = { enabled = true },
       completion = {
         accept = {
