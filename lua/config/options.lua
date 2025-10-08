@@ -46,6 +46,8 @@ opt.sidescroll = 4
 opt.sidescrolloff = 8 -- Columns of context
 opt.splitright = true -- Put new windows right of current
 opt.splitbelow = true -- Put new windows below current
+opt.splitkeep = "screen"
+opt.winminwidth = 5
 
 opt.shiftwidth = 4 -- Size of an indent
 opt.tabstop = 4 -- Number of spaces tabs count for
@@ -68,7 +70,6 @@ opt.undofile = true
 opt.swapfile = false
 opt.backup = false
 
--- opt.cc = "80"
 opt.signcolumn = "yes" -- always show the signcolumn
 
 opt.spelllang = {
