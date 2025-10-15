@@ -18,22 +18,6 @@ return {
   },
 
   {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    priority = 1000,
-    enabled = false,
-    config = function()
-      require("catppuccin").setup({
-        transparent_background = not vim.g.neovide, -- disables setting the background color.
-        show_end_of_buffer = true, -- shows the '~' characters after the end of buffers
-        term_colors = false, -- sets terminal colors (e.g. `g:terminal_color_0`)
-        no_italic = true, -- Force no italic
-      })
-      vim.cmd.colorscheme("catppuccin")
-    end,
-  },
-
-  {
     "stevearc/dressing.nvim",
     event = "VeryLazy",
   },
@@ -113,6 +97,7 @@ return {
   {
     "echasnovski/mini.indentscope",
     event = { "BufReadPre", "BufNewFile" },
+    enabled = true,
     version = false, -- wait till new 0.7.0 release to put it back on semver
     opts = {
       symbol = "│",

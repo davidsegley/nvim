@@ -61,6 +61,11 @@ return {
       vim.lsp.config("gdscript", gdscript_config)
 
       vim.lsp.config("ts_ls", {
+        init_options = {
+          preferences = {
+            importModuleSpecifierPreference = "relative",
+          },
+        },
         filetypes = {
           "javascript",
           "typescript",
@@ -90,15 +95,15 @@ return {
         },
       })
 
-      -- require("mason-lspconfig").setup({
-      --   ensure_installed = { "lua_ls" },
-      --   automatic_enable = true,
-      -- })
-
       vim.lsp.config("vtsls", {
         settings = {
           vtsls = {
             tsserver = {
+              init_options = {
+                preferences = {
+                  importModuleSpecifierPreference = "relative",
+                },
+              },
               globalPlugins = {
                 {
                   name = "@vue/typescript-plugin",

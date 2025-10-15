@@ -90,7 +90,7 @@ return {
     local actions = require("telescope.actions")
 
     telescope.setup({
-      defaults = {
+      defaults = require("telescope.themes").get_ivy({
         prompt_prefix = " ",
         get_selection_window = function()
           local wins = vim.api.nvim_list_wins()
@@ -110,7 +110,7 @@ return {
             ["<C-j>"] = actions.move_selection_next, -- move to next result
           },
         },
-      },
+      }),
     })
 
     telescope.load_extension("fzf")

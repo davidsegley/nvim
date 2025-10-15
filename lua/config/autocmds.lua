@@ -92,11 +92,11 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup("wrap_spell"),
-  pattern = { "gitcommit", "markdown" },
+  pattern = { "qf", "term://*toggleterm*" },
   callback = function()
-    vim.opt_local.spell = true
+    vim.opt_local.spell = false
   end,
-  desc = "Check for spell in text filetypes",
+  desc = "Disable spell for some files",
 })
 
 vim.api.nvim_create_autocmd("BufReadPre", {
