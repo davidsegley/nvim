@@ -43,15 +43,6 @@ return {
         end,
       }
 
-      if vim.fn.has("win32") == 1 then
-        gdscript_config.cmd = { "ncat", "localhost", "6005" }
-        gdscript_config.root_dir = function()
-          return vim.fs.dirname(
-            vim.fs.find({ "project.godot", ".git" }, { upward = true })[1]
-          )
-        end
-      end
-
       -- Put this flags in godot
       -- Use External Editor: On
       -- Exec Path: full_path_to_nvim
@@ -165,6 +156,8 @@ return {
       vim.lsp.enable("vue_ls")
       vim.lsp.enable("basedpyright")
       vim.lsp.enable("ruff")
+      vim.lsp.enable("bashls")
+      vim.lsp.enable("gdscript")
     end,
   },
 }
