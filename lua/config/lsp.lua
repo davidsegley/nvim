@@ -59,7 +59,7 @@ local function setup_keymaps(args)
   end, opts)
 
   --stylua: ignore start
-  vim.keymap.set('n', 'gd', '<cmd>Telescope lsp_definitions reuse_win=true<cr>', opts)
+  vim.keymap.set('n', 'gd', '<cmd>FzfLua lsp_definitions<cr>', opts)
   vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
   vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
   vim.keymap.set('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
@@ -68,7 +68,6 @@ local function setup_keymaps(args)
   vim.keymap.set('n', '<leader>cr', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
   vim.keymap.set({'n', 'x'}, '<leader>cf', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
   vim.keymap.set({'n', 'v'}, '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
-  vim.keymap.set("n", "<leader>cD", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
   --stylua: ignore end
 end
 

@@ -1,9 +1,10 @@
 local util = require("util.telescope")
 
 return {
+  enabled = false,
   "nvim-telescope/telescope.nvim",
   cmd = "Telescope",
-  version = false, -- telescope did only one release, so use HEAD for now
+  -- version = false, -- telescope did only one release, so use HEAD for now
   dependencies = {
     "nvim-lua/plenary.nvim",
     {
@@ -11,7 +12,7 @@ return {
       build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
       enabled = vim.fn.executable("cmake") == 1,
     },
-    { "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
+    -- { "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
   },
   keys = {
     { "<C-p>", "<cmd>Telescope git_files<CR>", desc = "Telescope Git Files" },
@@ -21,7 +22,7 @@ return {
       desc = "Switch Buffer",
     },
 
-    { "<leader><space>", util.find_files, desc = "Find Files" },
+    -- { "<leader><space>", util.find_files, desc = "Find Files" },
     { "<leader>/", "<cmd>Telescope live_grep<cr>", desc = "Find String" },
     { "<leader>fc", util.config_files, desc = "Find Config File" },
     { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
@@ -90,7 +91,8 @@ return {
     local actions = require("telescope.actions")
 
     telescope.setup({
-      defaults = require("telescope.themes").get_ivy({
+      defaults = {
+        disable_devicons = true,
         prompt_prefix = " ",
         get_selection_window = function()
           local wins = vim.api.nvim_list_wins()
@@ -110,7 +112,14 @@ return {
             ["<C-j>"] = actions.move_selection_next, -- move to next result
           },
         },
-      }),
+      },
+      extensions = {
+        fzf = {
+          fuzzy = true, -- false will only do exact matching
+          override_generic_sorter = true, -- override the generic sorter
+          override_file_sorter = true, -- override the file sorter
+        },
+      },
     })
 
     telescope.load_extension("fzf")
