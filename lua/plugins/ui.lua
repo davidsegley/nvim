@@ -3,7 +3,7 @@ return {
     "no-clown-fiesta/no-clown-fiesta.nvim",
     name = "no-clown-fiesta",
     priority = 1000,
-    enabled = true,
+    enabled = false,
     config = function()
       require("no-clown-fiesta").setup({
         transparent = false,
@@ -14,6 +14,21 @@ return {
       local palette = require("no-clown-fiesta.palettes")
       vim.api.nvim_set_hl(0, "StatusLine", { fg = palette.fg })
       vim.api.nvim_set_hl(0, "StatusLineNC", { fg = palette.gray })
+    end,
+  },
+
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
+    config = function()
+      require("catppuccin").setup({
+        show_end_of_buffer = true,
+        no_italic = true,
+        no_bold = true,
+      })
+
+      vim.cmd.colorscheme("catppuccin")
     end,
   },
 
