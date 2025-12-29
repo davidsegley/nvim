@@ -24,7 +24,7 @@ end
 local opt = vim.opt
 
 opt.spell = true
-opt.cc = "80"
+-- opt.cc = "80"
 opt.mouse = "a" -- enable mouse
 opt.termguicolors = true -- True color support
 opt.confirm = true -- Confirm to save changes before exiting modified buffer
@@ -41,17 +41,17 @@ opt.grepprg = "rg --vimgrep"
 opt.list = true -- Show some invisible characters
 opt.cursorline = true -- Highlight of the current line
 
-vim.o.scrolloff = 4 -- minimal number of screen lines to keep above and below the cursor
-opt.sidescroll = 4
+vim.o.scrolloff = 2 -- minimal number of screen lines to keep above and below the cursor
+opt.sidescroll = 2
 opt.sidescrolloff = 8 -- Columns of context
 opt.splitright = true -- Put new windows right of current
 opt.splitbelow = true -- Put new windows below current
 opt.splitkeep = "screen"
 opt.winminwidth = 5
 
-opt.shiftwidth = 4 -- Size of an indent
-opt.tabstop = 4 -- Number of spaces tabs count for
-opt.softtabstop = 4
+opt.shiftwidth = 2 -- Size of an indent
+opt.tabstop = 2 -- Number of spaces tabs count for
+opt.softtabstop = 2
 opt.expandtab = true -- Use spaces instead of tabs
 opt.shiftround = true -- Round indent
 opt.autoindent = true

@@ -24,8 +24,7 @@ return {
     config = function()
       require("catppuccin").setup({
         show_end_of_buffer = true,
-        no_italic = true,
-        no_bold = true,
+        transparent_background = true,
       })
 
       vim.cmd.colorscheme("catppuccin")

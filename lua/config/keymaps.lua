@@ -49,10 +49,6 @@ vim.keymap.set("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
 
 -- Terminal Mappings
 vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
--- vim.keymap.set("t", "<C-h>", "<cmd>wincmd h<cr>", { desc = "Go to left window" })
--- vim.keymap.set("t", "<C-j>", "<cmd>wincmd j<cr>", { desc = "Go to lower window" })
--- vim.keymap.set("t", "<C-k>", "<cmd>wincmd k<cr>", { desc = "Go to upper window" })
--- vim.keymap.set("t", "<C-l>", "<cmd>wincmd l<cr>", { desc = "Go to right window" })
 vim.keymap.set("t", "<C-/>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 vim.keymap.set("t", "<c-_>", "<cmd>close<cr>", { desc = "which_key_ignore" })
 
@@ -71,6 +67,7 @@ vim.keymap.set("n", "<leader><tab>n", "<cmd>tabNext<cr>", { desc = "Next Tab" })
 vim.keymap.set("n", "<leader><tab>p", "<cmd>tabprevious<cr>", { desc = "Prev Tab" })
 vim.keymap.set("n", "<leader><tab>c", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 
+-- clipboard
 vim.keymap.set({"n", "v"}, "<leader>y", [["+y]], { desc = "Yank to System Clipboard" })
 vim.keymap.set({"n", "v"}, "<leader>Y", [["+Y]], { desc = "Append to System Clipboard" })
 vim.keymap.set("n", "<leader>p", [["+p]], { desc = "Paste from System Clipboard" })
