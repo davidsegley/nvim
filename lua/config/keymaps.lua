@@ -58,8 +58,8 @@ vim.keymap.set("n", "<leader>cl", "<cmd>LspInfo<CR>", { desc = "LSP Info" })
 vim.keymap.set("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
 
 -- Explorer
-vim.keymap.set("n", "<leader>e", "<cmd>Ex<cr>", { desc = "Open Explorer" })
-vim.keymap.set("n", "<leader>E", "<cmd>Vexplore<cr>", { desc = "Open Explorer (split)" })
+vim.keymap.set("n", "<leader>e", "<cmd>Vexplore<cr>", { desc = "Open Explorer (split)" })
+vim.keymap.set("n", "<leader>E", "<cmd>Explore<cr>", { desc = "Open Explorer" })
 
 -- tabs
 vim.keymap.set("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New Tab" })

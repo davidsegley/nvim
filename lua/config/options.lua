@@ -23,8 +23,6 @@ end
 
 local opt = vim.opt
 
-opt.showmode = false
-
 opt.spell = true
 opt.cc = "80"
 opt.mouse = "a" -- enable mouse
