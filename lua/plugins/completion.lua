@@ -4,6 +4,7 @@ return {
     event = "InsertEnter",
     version = "1.*",
     opts = {
+      fuzzy = { implementation = "rust" },
       keymap = {
         preset = "default",
         ["<C-u>"] = { "scroll_documentation_up", "fallback" },

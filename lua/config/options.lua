@@ -23,8 +23,10 @@ end
 
 local opt = vim.opt
 
+opt.showmode = false
+
 opt.spell = true
--- opt.cc = "80"
+opt.cc = "80"
 opt.mouse = "a" -- enable mouse
 opt.termguicolors = true -- True color support
 opt.confirm = true -- Confirm to save changes before exiting modified buffer
@@ -101,7 +103,7 @@ opt.fillchars = {
 }
 
 vim.diagnostic.config({
-  virtual_text = false,
+  virtual_text = true,
 })
 
 if vim.g.neovide then

@@ -20,6 +20,11 @@ return {
 
       require("fzf-lua").setup({
         "max-perf",
+        keymap = {
+          fzf = {
+            ["ctrl-q"] = "select-all+accept",
+          },
+        },
       })
 
       vim.keymap.set(
