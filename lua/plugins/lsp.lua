@@ -147,6 +147,16 @@ return {
         end,
       })
 
+      vim.lsp.config("clangd", {
+        cmd = {
+          "clangd",
+          "--clang-tidy",
+          "--background-index",
+          "-j",
+          "8",
+        },
+      })
+
       vim.lsp.enable("gopls")
       vim.lsp.enable("ts_ls", false)
       vim.lsp.enable("lua_ls")
