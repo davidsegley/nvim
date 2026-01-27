@@ -25,6 +25,12 @@ return {
             ["ctrl-q"] = "select-all+accept",
           },
         },
+        winopts = {
+          preview = {
+            layout = "vertical", -- valid options are "horizontal", "vertical", or "flex"
+            vertical = "up:45%", -- set the position and size (e.g., "up:45%" or "down:60%")
+          },
+        },
       })
 
       vim.keymap.set(
