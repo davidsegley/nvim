@@ -1,23 +1,5 @@
 return {
   {
-    "no-clown-fiesta/no-clown-fiesta.nvim",
-    name = "no-clown-fiesta",
-    priority = 1000,
-    enabled = false,
-    config = function()
-      require("no-clown-fiesta").setup({
-        transparent = false,
-      })
-
-      vim.cmd.colorscheme("no-clown-fiesta")
-
-      local palette = require("no-clown-fiesta.palettes")
-      vim.api.nvim_set_hl(0, "StatusLine", { fg = palette.fg })
-      vim.api.nvim_set_hl(0, "StatusLineNC", { fg = palette.gray })
-    end,
-  },
-
-  {
     "catppuccin/nvim",
     name = "catppuccin",
     priority = 1000,
@@ -143,7 +125,7 @@ return {
     "NvChad/nvim-colorizer.lua",
     event = { "BufReadPre", "BufNewFile" },
     opts = {
-      user_default_options = {
+      options = {
         names = false,
       },
     },
