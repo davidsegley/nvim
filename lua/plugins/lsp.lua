@@ -168,6 +168,7 @@ return {
       vim.lsp.enable("ruff")
       vim.lsp.enable("bashls")
       vim.lsp.enable("gdscript")
+      vim.lsp.enable("gn_language_server")
     end,
   },
 }
