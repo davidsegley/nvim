@@ -7,7 +7,8 @@ return {
     build = ":TSUpdate",
     event = { "BufReadPost", "BufNewFile", "VeryLazy" },
     enabled = vim.fn.executable("gcc") == 1,
-    version = "*",
+    branch = "main",
+    lazy = false,
     dependencies = {
       {
         "nvim-treesitter/nvim-treesitter-context",
@@ -105,7 +106,7 @@ return {
           return true
         end, opts.ensure_installed)
       end
-      require("nvim-treesitter.configs").setup(opts)
+      require("nvim-treesitter").setup(opts)
     end,
   },
 }
