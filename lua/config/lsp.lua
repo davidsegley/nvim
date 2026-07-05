@@ -13,7 +13,7 @@ local gdscript_config = {
     end
 
     local success =
-      pcall(vim.api.nvim_command, [[echo serverstart(']] .. pipe .. [[')]])
+        pcall(vim.api.nvim_command, [[echo serverstart(']] .. pipe .. [[')]])
 
     if success then
       print("Godot Language Server Connected")
@@ -76,7 +76,8 @@ vim.lsp.config("vtsls", {
         globalPlugins = {
           {
             name = "@vue/typescript-plugin",
-            location = "/home/starb/.local/share/nvm/v22.17.1/lib/node_modules/@vue/typescript-plugin",
+            location =
+            "/home/starb/.local/share/nvm/v22.17.1/lib/node_modules/@vue/typescript-plugin",
             languages = { "vue" },
             configNamespace = "typescript",
           },
@@ -97,7 +98,7 @@ vim.lsp.config("vue_ls", {
   on_init = function(client)
     client.handlers["tsserver/request"] = function(_, result, context)
       local clients =
-        vim.lsp.get_clients({ bufnr = context.bufnr, name = "vtsls" })
+          vim.lsp.get_clients({ bufnr = context.bufnr, name = "vtsls" })
       if #clients == 0 then
         vim.notify(
           "Could not found `vtsls` lsp client, vue_lsp would not work without it.",
@@ -177,7 +178,7 @@ local function setup_client(args)
   if client:supports_method("textDocument/documentHighlight") then
     local autocmd = vim.api.nvim_create_autocmd
     local augroup =
-      vim.api.nvim_create_augroup("lsp_highlight", { clear = false })
+        vim.api.nvim_create_augroup("lsp_highlight", { clear = false })
 
     vim.api.nvim_clear_autocmds({ buffer = args.buf, group = augroup })
 
@@ -202,6 +203,22 @@ local function setup_client(args)
       { autotrigger = false }
     )
   end
+
+
+  if not client:supports_method('textDocument/willSaveWaitUntil')
+      and client:supports_method('textDocument/formatting') then
+    vim.api.nvim_create_autocmd('BufWritePre', {
+      group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
+      buffer = args.buf,
+      callback = function()
+        if vim.g.disable_autoformat or vim.b[args.buf].disable_autoformat then
+          return
+        end
+
+        vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
+      end,
+    })
+  end
 end
 
 local function setup_keymaps(args)
@@ -221,8 +238,10 @@ local function setup_keymaps(args)
   vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
   vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
   vim.keymap.set('n', '<leader>cr', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-  vim.keymap.set({'n', 'x'}, '<leader>cf', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
-  vim.keymap.set({'n', 'v'}, '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+  vim.keymap.set({ 'n', 'x' }, '<leader>cf',
+    '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
+  vim.keymap.set({ 'n', 'v' }, '<leader>ca',
+    '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
   --stylua: ignore end
 end
 
@@ -231,4 +250,22 @@ vim.api.nvim_create_autocmd("LspAttach", {
     setup_client(args)
     setup_keymaps(args)
   end,
+})
+
+vim.api.nvim_create_user_command("FormatDisable", function(args)
+  if args.bang then
+    vim.b.disable_autoformat = true
+  else
+    vim.g.disable_autoformat = true
+  end
+end, {
+  desc = "Disabe autoformat on save",
+  bang = true,
+})
+
+vim.api.nvim_create_user_command("FormatEnable", function()
+  vim.b.disable_autoformat = false
+  vim.g.disable_autoformat = false
+end, {
+  desc = "Re-enable autoformat on save",
 })

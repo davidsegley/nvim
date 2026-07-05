@@ -12,7 +12,7 @@ if vim.fn.has("win32") == 1 then
   vim.o.shell = "pwsh"
   vim.g.shellflag = " -NoLogo"
   vim.o.shellcmdflag =
-    "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;"
+  "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;"
   vim.o.shellredir = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode"
   vim.o.shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode"
   vim.o.shellquote = ""
@@ -26,23 +26,23 @@ local opt = vim.opt
 
 opt.spell = true
 opt.cc = "80"
-opt.mouse = "a" -- enable mouse
+opt.mouse = "a"          -- enable mouse
 opt.termguicolors = true -- True color support
-opt.confirm = true -- Confirm to save changes before exiting modified buffer
+opt.confirm = true       -- Confirm to save changes before exiting modified buffer
 opt.timeoutlen = 300
 
 opt.number = true
 opt.relativenumber = true -- Relative line numbers
-opt.wrap = false -- Disable line wrap
+opt.wrap = false          -- Disable line wrap
 
 -- ripgrep
 opt.grepformat = "%f:%l:%c:%m"
 opt.grepprg = "rg --vimgrep"
 
-opt.list = true -- Show some invisible characters
+opt.list = true       -- Show some invisible characters
 opt.cursorline = true -- Highlight of the current line
 
-vim.o.scrolloff = 2 -- minimal number of screen lines to keep above and below the cursor
+vim.o.scrolloff = 2   -- minimal number of screen lines to keep above and below the cursor
 opt.sidescroll = 2
 opt.sidescrolloff = 8 -- Columns of context
 opt.splitright = true -- Put new windows right of current
@@ -50,10 +50,10 @@ opt.splitbelow = true -- Put new windows below current
 opt.splitkeep = "screen"
 opt.winminwidth = 5
 
-opt.shiftwidth = 2 -- Size of an indent
-opt.tabstop = 2 -- Number of spaces tabs count for
+opt.shiftwidth = 2    -- Size of an indent
+opt.tabstop = 2       -- Number of spaces tabs count for
 opt.softtabstop = 2
-opt.expandtab = true -- Use spaces instead of tabs
+opt.expandtab = true  -- Use spaces instead of tabs
 opt.shiftround = true -- Round indent
 opt.autoindent = true
 opt.smartindent = true
@@ -62,7 +62,7 @@ opt.ignorecase = true
 opt.smartcase = true
 
 opt.hlsearch = false
-opt.incsearch = true -- show matching patters as you type
+opt.incsearch = true       -- show matching patters as you type
 opt.inccommand = "nosplit" -- preview incremental substitute
 
 opt.undofile = true
@@ -78,7 +78,7 @@ opt.completeopt = {
   "fuzzy",
   "menu",
   "menuone",
-  "noinsert",
+  "noselect",
   "popup",
   "popup",
   "preview",
