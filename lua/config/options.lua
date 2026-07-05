@@ -1,6 +1,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.editorconfig = true
+vim.o.autocomplete = true
 
 -- Netrw
 vim.g.netrw_bufsettings = "noma nomod nu nobl nowrap ro"
@@ -72,6 +73,17 @@ opt.backup = false
 
 opt.signcolumn = "yes" -- always show the signcolumn
 
+opt.complete:append("o")
+opt.completeopt = {
+  "fuzzy",
+  "menu",
+  "menuone",
+  "noinsert",
+  "popup",
+  "popup",
+  "preview",
+}
+
 opt.spelllang = {
   "es_mx",
   "en_us",
@@ -108,6 +120,6 @@ if vim.g.neovide then
   vim.o.guifont = "Iosevka Nerd Font:h14"
 end
 
-if vim.env.TMUX ~= nil then
-  vim.g.clipboard = "tmux"
-end
+-- if vim.env.TMUX ~= nil then
+--   vim.g.clipboard = "tmux"
+-- end
