@@ -11,7 +11,6 @@ vim.pack.add({
   "https://github.com/windwp/nvim-ts-autotag",
   "https://github.com/nvim-treesitter/nvim-treesitter-context",
   "https://github.com/nvim-treesitter/nvim-treesitter",
-  "https://github.com/ojroques/nvim-osc52",
   "https://github.com/lewis6991/gitsigns.nvim",
   "https://github.com/echasnovski/mini.indentscope",
   "https://github.com/akinsho/toggleterm.nvim",
@@ -33,6 +32,8 @@ require("catppuccin").setup({
 })
 
 vim.cmd.colorscheme("catppuccin-mocha")
+
+require("nvim-web-devicons").setup({})
 
 require("ibl").setup({
   indent = {
@@ -185,28 +186,6 @@ require("nvim-treesitter").setup({
     "go",
   },
 })
-
-
-require("osc52").setup({
-  max_length = 0, -- Maximum length of selection (0 for no limit)
-  silent = false, -- Disable message on successful copy
-  trim = false,   -- Trim surrounding whitespaces before copy
-})
-
-local function copy()
-  if vim.env.SSH_CONNECTION == nil then
-    return
-  end
-
-  if
-      (vim.v.event.operator == "y" or vim.v.event.operator == "d")
-      and vim.v.event.regname == "+"
-  then
-    require("osc52").copy_register("+")
-  end
-end
-
-vim.api.nvim_create_autocmd("TextYankPost", { callback = copy })
 
 require("gitsigns").setup({
   signcolumn = false,

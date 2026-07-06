@@ -120,6 +120,6 @@ if vim.g.neovide then
   vim.o.guifont = "Iosevka Nerd Font:h14"
 end
 
--- if vim.env.TMUX ~= nil then
---   vim.g.clipboard = "tmux"
--- end
+if vim.env.TMUX ~= nil and vim.env.SSH_CONNECTION ~= nil then
+  vim.g.clipboard = "tmux"
+end
