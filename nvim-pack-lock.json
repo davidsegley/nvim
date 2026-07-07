@@ -1,7 +1,7 @@
 {
   "plugins": {
     "fzf-lua": {
-      "rev": "1c91f217f394b8c5c628f9e900fc52e923c850fa",
+      "rev": "ed4059deb9237f7f4cc8832ffef69779ffe2e265",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "gitsigns.nvim": {
@@ -22,15 +22,19 @@
       "src": "https://github.com/williamboman/mason.nvim"
     },
     "mini.bufremove": {
-      "rev": "4cfbb201b2760da79ca6e1a00e9f67cbc99cbb8f",
+      "rev": "281bb1a2c60c3618c854bef2c0933276eb2362c2",
       "src": "https://github.com/echasnovski/mini.bufremove"
     },
     "mini.indentscope": {
-      "rev": "942bc13ccc624c825b086373b8bd6787b98245c8",
+      "rev": "92fbaf895f83c59575ec599df532b297ebf62b14",
       "src": "https://github.com/echasnovski/mini.indentscope"
     },
+    "modus-themes.nvim": {
+      "rev": "17a64464c27c1be605adca13dbe48f2f402fe107",
+      "src": "https://github.com/miikanissi/modus-themes.nvim"
+    },
     "nvim": {
-      "rev": "e068ab5f8261f23f6f71ffd8791ae40315b77b9c",
+      "rev": "05e8787020dcfdb937bf2ff23855ea2415b4e072",
       "src": "https://github.com/catppuccin/nvim"
     },
     "nvim-autopairs": {

@@ -1,6 +1,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.editorconfig = true
+vim.g.disable_autoformat = true
 vim.o.autocomplete = true
 
 -- Netrw

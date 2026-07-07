@@ -1,5 +1,5 @@
 vim.pack.add({
-  "https://github.com/catppuccin/nvim",
+  "https://github.com/miikanissi/modus-themes.nvim",
   "https://github.com/neovim/nvim-lspconfig",
   "https://github.com/williamboman/mason.nvim",
   "https://github.com/nvim-tree/nvim-web-devicons",
@@ -26,12 +26,7 @@ vim.pack.add({
   }
 })
 
-require("catppuccin").setup({
-  show_end_of_buffer = true,
-  transparent_background = false,
-})
-
-vim.cmd.colorscheme("catppuccin-mocha")
+vim.cmd.colorscheme("modus_vivendi")
 
 require("nvim-web-devicons").setup({})
 
