@@ -69,6 +69,8 @@ require("fzf-lua").setup({
       vertical = "up:45%", -- set the position and size (e.g., "up:45%" or "down:60%")
     },
   },
+  ui_select = {
+  },
 })
 
 vim.keymap.set("n", "<leader><space>", "<cmd>FzfLua files previewer=false<cr>",
