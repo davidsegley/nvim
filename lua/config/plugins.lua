@@ -92,7 +92,8 @@ vim.keymap.set("n", "<leader>sr", "<cmd>FzfLua resume<cr>",
   { desc = "Resume last search" })
 vim.keymap.set("n", "<leader>fr", "<cmd>FzfLua oldfiles previewer=false<cr>",
   { desc = "Search recent files" })
-vim.keymap.set("n", "<leader>cs", "<cmd>FzfLua lsp_document_symbols<cr>",
+vim.keymap.set("n", "<leader>cs",
+  "<cmd>FzfLua lsp_document_symbols previewer=false<cr>",
   { desc = "Lsp Document Symbols" })
 
 local function find_config_files()

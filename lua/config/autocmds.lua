@@ -1,47 +1,6 @@
-local ignore_filetypes = {
-  "neo-tree",
-  "NvimTree",
-  "dap-repl",
-  "dapui-console",
-  "dapui-watches",
-  "dapui-stacks",
-  "dapui-breakpoints",
-  "dapui-scopes",
-  "toggleterm",
-  "help",
-}
-
-local ignore_buftypes = { "nofile", "prompt", "popup" }
-
 local function augroup(name)
   return vim.api.nvim_create_augroup("starb_" .. name, { clear = true })
 end
-
-local g_focus_disable = augroup("focus_disable")
-
-vim.api.nvim_create_autocmd("WinEnter", {
-  group = g_focus_disable,
-  callback = function(_)
-    if vim.tbl_contains(ignore_buftypes, vim.bo.buftype) then
-      vim.w.focus_disable = true
-    else
-      vim.w.focus_disable = false
-    end
-  end,
-  desc = "Disable focus autoresize for BufType",
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-  group = g_focus_disable,
-  callback = function(_)
-    if vim.tbl_contains(ignore_filetypes, vim.bo.filetype) then
-      vim.b.focus_disable = true
-    else
-      vim.b.focus_disable = false
-    end
-  end,
-  desc = "Disable focus autoresize for FileType",
-})
 
 vim.api.nvim_create_autocmd("TextYankPost", {
   group = augroup("highlight_yank"),
@@ -110,6 +69,7 @@ vim.api.nvim_create_autocmd("BufReadPre", {
   desc = "Disable treesitter foldexpr if the file is too large",
 })
 
+local ignore_buftypes = { "nofile", "prompt", "popup" }
 -- https://github.com/mhinz/vim-galore?tab=readme-ov-file#smarter-cursorline
 vim.api.nvim_create_autocmd("WinEnter", {
   callback = function()
@@ -127,4 +87,12 @@ vim.api.nvim_create_autocmd("WinLeave", {
   callback = function()
     vim.opt.cursorline = false
   end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "gn",
+  callback = function(args)
+    pcall(vim.treesitter.start, args.buf)
+  end,
+  desc = "Enable treesitter on GN files"
 })
