@@ -26,6 +26,10 @@ vim.pack.add({
   }
 })
 
+require("modus-themes").setup({
+  line_nr_column_background = false
+})
+
 vim.cmd.colorscheme("modus_vivendi")
 
 require("nvim-web-devicons").setup({})
