@@ -30,7 +30,6 @@ opt.cc = "80"
 opt.mouse = "a"          -- enable mouse
 opt.termguicolors = true -- True color support
 opt.confirm = true       -- Confirm to save changes before exiting modified buffer
-opt.timeoutlen = 300
 
 opt.number = true
 opt.relativenumber = true -- Relative line numbers
