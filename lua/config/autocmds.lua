@@ -46,7 +46,8 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     local file = vim.uv.fs_realpath(event.match) or event.match
     vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
   end,
-  desc = "Auto create dir when saving a file, in case some intermediate directory does not exist",
+  desc =
+  "Auto create dir when saving a file, in case some intermediate directory does not exist",
 })
 
 vim.api.nvim_create_autocmd("FileType", {
@@ -95,4 +96,31 @@ vim.api.nvim_create_autocmd("FileType", {
     pcall(vim.treesitter.start, args.buf)
   end,
   desc = "Enable treesitter on GN files"
+})
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = "*.mojom",
+  callback = function(args)
+    -- Search upward for the tools/vim/mojom directory
+    local match = vim.fs.find("tools/vim/mojom", {
+      path = vim.fs.dirname(args.file),
+      upward = true,
+      type = "directory",
+    })[1]
+
+    if match then
+      vim.opt.runtimepath:append(match)
+      vim.bo.syntax = 'mojom'
+      vim.cmd("syntax syntax/mojom.vim")
+    end
+  end,
+  desc = "Load Mojom syntax highlighting in chromium repo",
+  once = true,
+})
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = "*.mojom",
+  callback = function(args)
+    vim.bo[args.buf].filetype = "mojom"
+  end,
 })
