@@ -307,3 +307,14 @@ local logo = [[
 
 dashboard.section.header.val = vim.split(logo, "\n")
 alpha.setup(dashboard.opts)
+
+vim.api.nvim_create_user_command("PackRemoveNonActive", function()
+  vim.pack.del(vim.iter(vim.pack.get())
+    :filter(function(x) return not x.active end)
+    :map(function(x) return x.spec.name end)
+    :totable())
+end, {})
+
+vim.api.nvim_create_user_command("PackUpdatePlugins", function()
+  vim.pack.update(nil)
+end, {})
