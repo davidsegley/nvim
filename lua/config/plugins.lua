@@ -1,5 +1,4 @@
 vim.pack.add({
-  "https://github.com/miikanissi/modus-themes.nvim",
   "https://github.com/neovim/nvim-lspconfig",
   "https://github.com/williamboman/mason.nvim",
   "https://github.com/nvim-tree/nvim-web-devicons",
@@ -15,6 +14,12 @@ vim.pack.add({
   "https://github.com/echasnovski/mini.indentscope",
   "https://github.com/akinsho/toggleterm.nvim",
   "https://github.com/goolord/alpha-nvim",
+  "https://github.com/windwp/nvim-ts-autotag",
+
+  {
+    src = "https://github.com/catppuccin/nvim",
+    name = "catppuccin",
+  },
 
   {
     src = "https://github.com/ThePrimeagen/harpoon",
@@ -27,11 +32,11 @@ vim.pack.add({
   }
 })
 
-require("modus-themes").setup({
-  line_nr_column_background = false
+require("catppuccin").setup({
+  transparent_background = true,
 })
 
-vim.cmd.colorscheme("modus_vivendi")
+vim.cmd.colorscheme("catppuccin-mocha")
 
 require("nvim-web-devicons").setup({})
 
@@ -318,3 +323,5 @@ end, {})
 vim.api.nvim_create_user_command("PackUpdatePlugins", function()
   vim.pack.update(nil)
 end, {})
+
+require("nvim-ts-autotag").setup()
