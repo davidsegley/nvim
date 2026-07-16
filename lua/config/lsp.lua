@@ -5,7 +5,13 @@ vim.lsp.config("*", {
   },
 })
 
-local gdscript_config = {
+-- Put this flags in godot
+-- Use External Editor: On
+-- Exec Path: full_path_to_nvim
+-- Exec Flags(windows): --server "\\\\.\\pipe\\godot.pipe" --remote-send "<cmd>:n {file}<cr>:call cursor({line},{col})<cr>"
+-- Exec Flags(linux): --server "/tmp/godot.pipe" --remote-send "<cmd>:n {file}<cr>:call cursor({line},{col})<cr>"
+
+vim.lsp.config("gdscript", {
   on_attach = function()
     local pipe = [[\\.\pipe\godot.pipe]]
     if vim.fn.has("win32") == 0 then
@@ -19,27 +25,6 @@ local gdscript_config = {
       print("Godot Language Server Connected")
     end
   end,
-}
-
--- Put this flags in godot
--- Use External Editor: On
--- Exec Path: full_path_to_nvim
--- Exec Flags(windows): --server "\\\\.\\pipe\\godot.pipe" --remote-send "<cmd>:n {file}<cr>:call cursor({line},{col})<cr>"
--- Exec Flags(linux): --server "/tmp/godot.pipe" --remote-send "<cmd>:n {file}<cr>:call cursor({line},{col})<cr>"
-
-vim.lsp.config("gdscript", gdscript_config)
-
-vim.lsp.config("ts_ls", {
-  init_options = {
-    preferences = {
-      importModuleSpecifierPreference = "relative",
-    },
-  },
-  filetypes = {
-    "javascript",
-    "typescript",
-    "vue",
-  },
 })
 
 vim.lsp.config("ruff", {
@@ -150,8 +135,6 @@ vim.lsp.enable({
   "gn_language_server",
 })
 
-vim.lsp.enable("ts_ls", false)
-
 local function setup_client(args)
   local client = vim.lsp.get_client_by_id(args.data.client_id)
 
@@ -161,7 +144,7 @@ local function setup_client(args)
 
   vim.lsp.inlay_hint.enable(false, { bufnr = args.buf })
 
-  local no_formatting = { "ts_ls", "vtsls", "vue_ls" }
+  local no_formatting = { "vtsls", "vue_ls" }
   if no_formatting[client.name] ~= nil then
     client.server_capabilities.documentFormattingProvider = false
   end

@@ -23,6 +23,7 @@ vim.keymap.set("n", "<leader>bb", "<cmd>e #<cr>",
   { desc = "Switch to Other Buffer" })
 vim.keymap.set("n", "<leader>bo", "<cmd>%bd|e#<cr>",
   { desc = "Delete other buffers" })
+vim.keymap.set("n", "<leader>bd", "<cmd>bd<cr>", { desc = "Close buffer" })
 
 -- Clear search with <esc>
 vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>",

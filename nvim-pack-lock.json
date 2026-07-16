@@ -29,10 +29,6 @@
       "rev": "2a6940af80375532e5e9e7c1f2fc6319a1b7a69d",
       "src": "https://github.com/williamboman/mason.nvim"
     },
-    "mini.bufremove": {
-      "rev": "281bb1a2c60c3618c854bef2c0933276eb2362c2",
-      "src": "https://github.com/echasnovski/mini.bufremove"
-    },
     "mini.indentscope": {
       "rev": "92fbaf895f83c59575ec599df532b297ebf62b14",
       "src": "https://github.com/echasnovski/mini.indentscope"
