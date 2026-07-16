@@ -325,3 +325,5 @@ vim.api.nvim_create_user_command("PackUpdatePlugins", function()
 end, {})
 
 require("nvim-ts-autotag").setup()
+
+vim.cmd("packadd nvim.undotree")

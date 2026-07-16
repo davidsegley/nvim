@@ -80,9 +80,9 @@ opt.completeopt = {
   "menuone",
   "noselect",
   "popup",
-  "popup",
-  "preview",
 }
+opt.pummaxwidth = 80
+opt.pumborder = "rounded"
 
 opt.spelllang = {
   "es_mx",

@@ -90,3 +90,7 @@ vim.keymap.set({ "n", "v" }, "<leader>Y", [["+Y]],
   { desc = "Append to System Clipboard" })
 vim.keymap.set("n", "<leader>p", [["+p]],
   { desc = "Paste from System Clipboard" })
+
+-- undotree
+vim.keymap.set("n", "<leader>u", "<cmd>Undotree<cr>",
+  { desc = "Toggle Undotree" })
