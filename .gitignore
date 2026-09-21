@@ -6,3 +6,6 @@ debug
 foo.*
 *.log
 data
+
+# Neovim local/private configuration overrides
+lua/local/
