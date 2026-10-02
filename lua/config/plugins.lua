@@ -202,6 +202,8 @@ require("gitsigns").setup({
       function() gs.blame_line({ ignore_whitespace = true }) end, "Blame Line")
     map("n", "<leader>gR", "<cmd>Gitsigns refresh<CR>", "Refresh")
     map("n", "<leader>gt", "<cmd>Gitsigns toggle_signs<CR>", "Toggle Signs")
+    map("n", "<leader>]", "<cmd>Gitsigns next_hunk<CR>", "Toggle Signs")
+    map("n", "<leader>[", "<cmd>Gitsigns prev_hunk<CR>", "Toggle Signs")
   end,
 })
 
