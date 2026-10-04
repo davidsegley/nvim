@@ -6,6 +6,9 @@ vim.o.autocomplete = true
 
 -- Netrw
 vim.g.netrw_bufsettings = "noma nomod nu nobl nowrap ro"
+vim.g.netrw_fastbrowse = 2
+vim.g.netrw_liststyle = 0
+vim.g.netrw_hide = 1
 
 if vim.fn.has("win32") == 1 then
   vim.cmd("let $LANG = 'en_US.UTF-8'", true)

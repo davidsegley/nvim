@@ -13,6 +13,7 @@ vim.pack.add({
   "https://github.com/akinsho/toggleterm.nvim",
   "https://github.com/goolord/alpha-nvim",
   "https://github.com/windwp/nvim-ts-autotag",
+  'https://github.com/stevearc/oil.nvim',
 
   {
     src = "https://github.com/catppuccin/nvim",
@@ -305,5 +306,9 @@ vim.api.nvim_create_user_command("PackUpdatePlugins", function()
 end, {})
 
 require("nvim-ts-autotag").setup()
+require("oil").setup({
+  default_file_explorer = true
+})
+vim.keymap.set("n", "<leader>e", "<cmd>Oil<cr>", { desc = "Open Explorer" })
 
 vim.cmd("packadd nvim.undotree")
